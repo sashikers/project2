@@ -8,9 +8,9 @@ module.exports = (app) => {
 
 	//admin page
 	app.get('/admin', (req,res) => {
-		res.render('editor', { layout: 'admin.handlebars',
-											testMessage:'Admin Page!'
-										});
+		res.render('editor', {layout: 'admin.handlebars'});
 	})
 
 };
+
+//{layout: 'admin.handlebars'}

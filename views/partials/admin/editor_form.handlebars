@@ -1,0 +1,129 @@
+<div class="row">
+  <form id="product-form" class="col s12">
+    <input id="id" type="hidden" class="validate">
+    <div class="row">
+      <div class="input-field col s8">  
+        <input id="title" type="text" class="validate">
+        <label for="title">Title</label>
+      </div> 
+      <div class="input-field col s2">
+        <input id="price" type="text" class="validate">
+        <label for="price">Price</label>
+      </div>
+      <div class="input-field col s2">
+        <input id="inventory" type="text" class="validate">
+        <label for="inventory">Inventory</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s6">
+        <select>
+          <option value="" disabled selected>Choose your option</option>
+          <option value="1">Option 1</option>
+          <option value="2">Option 2</option>
+          <option value="3">Option 3</option>
+        </select>
+        <label>Category</label>
+      </div>
+      <div class="input-field col s6">
+        <div class="file-field input-field">
+          <div class="btn">
+            <span>File</span>
+            <input type="file" multiple>
+          </div>
+          <div class="file-path-wrapper">
+            <input class="file-path validate" type="text" placeholder="Upload one or more files">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s6">
+        <textarea id="description" class="materialize-textarea" data-length="2000"></textarea>
+        <label for="textarea1">Textarea</label>
+      </div>
+      <div>
+        {{!-- Images Load Here --}}
+      </div>
+    </div>  
+    <button class="btn waves-effect waves-light" type="submit" name="action">Submit <i class="material-icons right">send</i>
+    </button>
+  </form>
+</div>
+
+<script type="text/javascript">
+  
+  function draw_items(items_array){
+    items_array.forEach(function(item){
+      var li_card = 
+          `<div class="col s12">
+            <div class="card horizontal">
+              <div class="card-image">
+                <img src="https://lorempixel.com/100/190/nature/6">
+              </div>
+              <div class="card-stacked">
+                <div class="card-content">
+                  <p>`+item.title+`</p>
+                </div>
+                <div class="card-action">
+                  <a data-id="`+item.id+`" class="waves-effect waves-light"><i class="material-icons left">edit</i></a>
+                </div>
+              </div>
+            </div>
+          </div>`
+
+      $('#product-list').append(li_card)
+    });
+  };
+
+  function load_items(){
+    $.ajax('/api/item/list',{
+      type: 'get',
+
+    }).done(function(items){
+      $('#product-list').empty();
+      draw_items(items);
+    }).fail(function(err){
+      alert(err);
+    });
+  };
+
+  load_items();
+
+  function load_form(){
+
+  };
+  
+  function  submit_form(){
+    var data = {
+      title: $('#title').val(),
+      price: $('#price').val(),
+      inventory: $('#inventory').val(),
+      description: $('#description').val(),
+      //category: $()...
+      //images: $('#images').val()
+    };
+
+    console.log("Here is the data we are submiting:", data);
+
+    $.ajax('/admin/api/editor/',{
+      type: 'post',
+      data: data,
+    }).done(function(data){
+      load_items();
+      console.log("here is the data", data);
+    }).fail(function(err){
+      alert(err);
+    });
+  };
+
+  //id: $('#id').val(),
+
+  //Handle form submit
+  $('#product-form').on('submit', function(e){
+    e.preventDefault();
+    submit_form();
+  });
+  
+
+</script>
