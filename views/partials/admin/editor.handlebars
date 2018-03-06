@@ -1,0 +1,88 @@
+<div class="row">
+  <form class="col s12">
+    <div class="row">
+      <div class="input-field col s3">
+        <input id="title" type="text" class="validate">
+        <label for="title">Title</label>
+      </div>
+      <div class="input-field col s2">
+        <input id="price" type="text" class="validate">
+        <label for="price">Price</label>
+      </div>
+      <div class="input-field col s2">
+        <input id="inventory" type="text" class="validate">
+        <label for="inventory">Inventory</label>
+      </div>
+      <div class="input-field col s5">
+        <select>
+          <option value="" disabled selected>Choose your option</option>
+          <option value="1">Option 1</option>
+          <option value="2">Option 2</option>
+          <option value="3">Option 3</option>
+        </select>
+        <label>Category</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s7">
+        <textarea id="textarea1" class="materialize-textarea"></textarea>
+        <label for="textarea1">Textarea</label>
+      </div>
+      <div class="input-field col s5">
+        <div class="file-field input-field">
+          <div class="btn">
+            <span>File</span>
+            <input type="file" multiple>
+          </div>
+          <div class="file-path-wrapper">
+            <input class="file-path validate" type="text" placeholder="Upload one or more files">
+          </div>
+        </div>
+      </div>
+    </div>  
+  </form>
+</div>
+
+<script type="text/javascript">
+  
+  function draw_items(items_array){
+
+
+  }
+
+  function load_items(){
+    $.ajax('/api/item/list',{
+      type: 'get',
+
+    }).done(functino(items){
+      draw_items(items_array);
+    }).fail(function(err){
+      alert(err);
+    });
+  };
+
+  load_items();
+  
+  function  submit_form(){
+
+    var data = {
+      id: $('#id').val(),
+      title: $('#title').val(),
+      price: $('#price').val(),
+      inventory: $('#inventory').val(),
+      description: $('#description').val(),
+      images: $('#images').val()
+    };
+
+    $.ajax('/admin/api/editor/create',{
+      type: 'post',
+      data: data,
+    }).done(funciton(data){
+      load_items();
+    }).fail(function(err){
+      alert(err)
+    });
+  }
+  
+
+</script>

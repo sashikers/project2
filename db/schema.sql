@@ -8,31 +8,31 @@ USE ecomm;
 
 -- tables
 
-CREATE TABLE products (
+CREATE TABLE product (
 	id INT AUTO_INCREMENT NOT NULL,
-	product VARCHAR (100) NOT NULL,
+	title VARCHAR (100) NOT NULL,
 	description VARCHAR (250),
-	category VARCHAR (25),
+	category_id INT NOT NULL,
 	inventory INT NOT NULL,
 	price decimal(11,2) NOT NULL,
 	createdAt TIMESTAMP NOT NULL,
 	PRIMARY KEY (id)
 );
 
-CREATE TABLE users (
-	userid INT AUTO_INCREMENT NOT NULL,
-	username VARCHAR (100) NOT NULL,
+CREATE TABLE user (
+	id INT AUTO_INCREMENT NOT NULL,
+	email VARCHAR (100) NOT NULL,
+	password VARCHAR (100) NOT NULL,
 	firstname VARCHAR (75),
 	lastname VARCHAR (100),
 	is_admin BOOLEAN NOT NULL,
 	createdAt TIMESTAMP NOT NULL,
-	PRIMARY KEY (userid)
+	PRIMARY KEY (id)
 );
 
-CREATE TABLE categories (
+CREATE TABLE category (
 	id INT AUTO_INCREMENT NOT NULL,
-	category VARCHAR (100) NOT NULL,
-	count INT,
+	title VARCHAR (100) NOT NULL,
 	createdAt TIMESTAMP NOT NULL,
 	PRIMARY KEY (id)
 );
