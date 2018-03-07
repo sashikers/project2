@@ -17,7 +17,8 @@
     "materialize-css": "^0.100.2",
     "mysql": "^2.15.0",
     "mysql2": "^1.5.2",
-    "sequelize": "^4.35.1"
+    "sequelize": "^4.35.1",
+    "stripe": "^5.5.0"
   },
   "devDependencies": {
     "chi": "0.0.10",
