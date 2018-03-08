@@ -1,84 +1,26 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<!-- <script src="https://js.stripe.com/v3/"></script> -->
-		<title>hello</title>
-	</head>
-	<body>
-		<form action="/charge" method="post" id="payment-form">
-			<div class="form-row">
-				<label for ="card-element">
-					Credit or debit card
-				</label>
-				<div id="card-element">
-					<!-- stripe element is inserted here -->
-				</div>
-				<div id="card-errors" role="alert">
-					<!-- any error messages would go here -->
-				</div>
-			</div>
+<div class="container" style="background-color:gray;">
+	<div class="row">
+		<div class="col s8">
+			{{cart}}
 
-			<button>Submit payment</button>
-		</form>
-
-		<script src="https://js.stripe.com/v3/"></script>
-		<!-- <script type="text/javascript">
-
-			var stripe = Stripe("pk_test_6pRNASCoBOKtIshFeQd4XMUh"); // demo API key
-			// elements creates UI components that are hosted by Stripe
-			var elements = stripe.elements();
-
-			// defines the style of the card element
-			var style = {
-				base: {
-					fontSize: '16px',
-					color: '#32325d'
-				}
-			};
-
-			// creates an instance of the card element
-			var card = elements.create('card', {style: style});
-			// adds the instance of the card element into the card-element div
-			card.mount('#card-element');
-
-			// adds event listener to display error messages if card entered incorrectly
-			card.addEventListener('change', function(event) {
-				var displayError = document.getElementById('card-errors');
-				if (event.error) {
-					displayError.textContent = event.error.message;
-				} else {
-					displayError.textContent = '';
-				}
-			});
-
-			// creates a token to transmit data to stripe
-			var form = document.getElementById('payment-form');
-
-			form.addEventListener('submit', function(event) {
-				event.preventDefault();
-
-				stripe.createToken(card).then(function(result) {
-					if (result.error) {
-						var errorElement = document.getElementById('card-errors');
-						errorElement.textContent = result.error.message;
-					} else {
-						stripeTokenHandler(result.token);
-					}
-				});
-			});
-
-			function stripeTokenHandler(token) {
-				// inserts the token id into the form so that it gets submitted to the server
-				var hiddenInput = document.createElement('input');
-				hiddenInput.setAttribute('type','hidden');
-				hiddenInput.setAttribute('name','stripeToken');
-				hiddenInput.setAttribute('value', token.id);
-				form.appendChild(hiddenInput);
-
-				form.submit();
-			}
-
-		</script> -->
-	</body>
-</html>
-
+		</div>
+		<div class="col s4">
+			<!-- "hardcoded" payment button  -->
+			<!-- the form collects the data, tokenizes it, and submits it to the server -->
+			<form action="your-server-side-code" method="POST">
+		  		<script
+				    src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+				    data-key="pk_test_6pRNASCoBOKtIshFeQd4XMUh"
+				    data-amount="999"
+				    data-name="Beer Buds"
+				    data-description="We love beer!"
+				    data-image="http://nordictravelmag.com/wp-content/uploads/2017/06/01.jpg"
+				    data-locale="auto"
+				    data-zip-code="true"
+				    data-billing-address="true"
+				    data-shipping-address="true">
+		  		</script>
+			</form>
+		</div>
+	</div>
+</div>
