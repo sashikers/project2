@@ -8,6 +8,12 @@ var env       = process.env.NODE_ENV || 'development';
 var config    = require(__dirname + '/../config/config.json')[env];
 var db        = {};
 
+config.define = {
+  //prevent sequelize from pluralizing table names
+  freezeTableName: true,
+};
+
+
 if (config.use_env_variable) {
   var sequelize = new Sequelize(process.env[config.use_env_variable], config);
 } else {
