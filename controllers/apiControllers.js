@@ -1,9 +1,10 @@
 'use strict';
 const database = require('../config/connection');
+const models = require('../models/index');
 
 module.exports = (app) => {
 
-	app.get('/api/item/list', (req,res) => {
+	app.get('/api/product/list', (req,res) => {
 
 		let query = `SELECT * FROM product ORDER BY createdAt DESC`;
 		database.query(query,(err, rows) => {
@@ -30,8 +31,8 @@ module.exports = (app) => {
 	});
 
 	app.put('/admin/api/editor/:id', (req, res) => {
-
 		let id = req.params.id;
+		console.log('Updating item! -- ', id);
 		let query = `UPDATE product SET ? WHERE id = ?`;
 		database.query(query, [req.body, id], (err,rows) => {
 			if(err) return res.status(404).json(err);
@@ -39,5 +40,14 @@ module.exports = (app) => {
 		});
 
 	});
+
+	app.get('/admin/api/product/:id', (req, res) => {
+		let id = req.params.id;
+		models.Product.findOne({where:[{id}]}).then((product) => {
+			return res.status(200).json(product);
+		});
+
+	});
+
 
 };

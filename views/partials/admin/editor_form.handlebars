@@ -39,8 +39,8 @@
         {{!-- Images Load Here --}}
       </div>
     </div>  
-    <button class="btn waves-effect waves-light" type="submit" name="action">Submit <i class="material-icons right">send</i>
-    </button>
+    <button class="btn waves-effect waves-light" type="submit" name="action">Submit</button>
+    <button class="btn waves-effect waves-light right red hide clear" name="action">Clear</button>
   </form>
 </div>
 
@@ -53,34 +53,109 @@ $(function(){
 
   load_items("#product-list");
 
-  function load_form(){
+  function get_product_info(id, callback_fn){
+    $.ajax('/admin/api/product/'+id,{
+      type: 'get',
+    }).done(function(product){
+      if(callback_fn && typeof callback_fn === 'function'){
+        callback_fn(product);
+      }
+    }).fail(function(err){
+      alert(err);
+    });
   };
+
+  var form = '#product-form';
+
+  $(document).on('click', '#product-list .card a.edit', function(e){
+    var id = $(this).attr('data-id');
+    get_product_info(id, function(product){
+      console.log("Here is the product: ", product);
+      $('#id', form).val(product.id);
+      $('#title', form).val(product.title);
+      $('#price', form).val(product.price);
+      $('#inventory', form).val(product.inventory);
+      $('#description', form).val(product.description);
+      $('#categories', form).val(product.category).material_select();
+      $("#image_url", form).val(product.image_url);
+      //update Materialize text display
+      Materialize.updateTextFields();
+      update_button_state();
+    });
+  });
   
   function  submit_form(){
     var data = {
-      title: $('#title').val(),
-      price: $('#price').val(),
-      inventory: $('#inventory').val(),
-      description: $('#description').val(),
-      category: $('#categories').val(),
-      image_url: $("#image_url").val(),
+      title: $('#title', form).val(),
+      price: $('#price', form).val(),
+      inventory: $('#inventory', form).val(),
+      description: $('#description', form).val(),
+      category: $('#categories', form).val(),
+      image_url: $("#image_url", form).val(),
     };
 
-    $.ajax('/admin/api/editor/',{
-      type: 'post',
+    var method = 'post';
+    var id = $('#id', form).val();
+    var url = "/admin/api/editor/";
+    if(id){
+      method = 'put';
+      url = url+id;
+    }
+
+    $.ajax(url,{
+      type: method,
       data: data,
     }).done(function(data){
       load_items("#product-list");
+      $('.clear', form).trigger('click');
     }).fail(function(err){
       alert(err);
     });
   };
 
   //Handle form submit
-  $('#product-form').on('submit', function(e){
+  $(form).on('submit', function(e){
     e.preventDefault();
     submit_form();
+    update_button_state();
   });
+
+  $('.clear', form).on('click', function(e){
+    e.preventDefault();
+    $(form)[0].reset();;
+    $('#categories', form).material_select();
+    update_button_state();
+    $(form).trigger('change');
+  });
+
+  function update_button_state(){
+    console.log('Trying to update...');
+    var id = $('#id', form).val();
+    var $submitButton = $("button[type='submit']")
+    if(id){
+      $submitButton.text('Update');
+    }else{
+      $submitButton.text('Submit');    
+    }
+
+    $(form).trigger('change');
+  };
+
+  $(form).on('change', function(e){
+    console.log('Form changed');
+    var form_is_empty = true;
+    var $clearButton = $("button.clear", form);
+    $(":text, :file, :checkbox, select, textarea", form).each(function() {
+      if($(this).val() != ""){
+        form_is_empty = false;
+      }
+    });
+    $clearButton.addClass('hide');
+    if(!form_is_empty){
+      $clearButton.removeClass('hide');
+    };
+  });
+
 
 });  
 

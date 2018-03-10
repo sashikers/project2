@@ -16,7 +16,7 @@ function admin_card_list_html(items_array){
                 <p>Inventory: `+item.inventory+`</p>
               </div>
               <div class="card-action">
-                <a data-id="`+item.id+`" class="waves-effect waves-light"><i class="material-icons left">edit</i></a>
+                <a data-id="`+item.id+`" class="waves-effect waves-light edit"><i class="material-icons left">edit</i></a>
               </div>
             </div>
           </div>
@@ -27,7 +27,7 @@ function admin_card_list_html(items_array){
 };
 
 function load_items(target_element){
-  $.ajax('/api/item/list',{
+  $.ajax('/api/product/list',{
     type: 'get',
   }).done(function(items){
     var card_list_html = admin_card_list_html(items);
