@@ -2,7 +2,7 @@
 var mysql = require("mysql2");
 
 var connection;
-var DB_PORT = 3306;
+var DB_PORT = 3306
 
 // if JawsDB is specified in environment (endables heroku)
 if(process.env.JAWSDB_URL) {
