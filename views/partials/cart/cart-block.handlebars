@@ -1,4 +1,64 @@
-<li>
-	{{product}}
-	{{price}}
-</li>
+
+{{#section 'script'}}
+	$(function() {
+		
+		function load_user_cart() {
+			$.ajax('api/user/cart', {
+				type: 'get',
+			}).done(function(items) {
+
+				// gets the user cart and stores the user cart items in an array 
+				var user_cart_items = {};
+				user_cart_items = items;
+
+				// goes through the item array and gets an id array
+				var user_cart_ids = [];
+				user_cart_items.forEach(function(item) {
+					user_cart_ids.append(item.id);
+				});
+
+				// pulls all of the items
+				$.ajax('/api/product/list', {
+					type: 'get',
+				}).done(function(allItems) {
+					// goes through all the items and checks if the item id matches the ids in the user cart id array
+					// need to fix this - ajax returns object, not array
+					allItems.forEach(function(item) {
+						if (user_cart_ids.indexOf(item.id) !== -1) {
+							// goes through the user_cart_items object and finds the object with the id
+							for (var x in user_cart_items) {
+								if (user_cart_items[x].id == item.id) {
+									// assigns key/value properties to the item in the user_cart_items
+									user_cart_items[x].title = item.title;
+									user_cart_items[x].price = item.price;
+									user_cart_items[x].description = item.description;
+									user_cart_items[x].category = item.category;
+								};
+							};
+						};
+					});
+
+
+
+				})
+
+			}).fail(function(err){
+				alert(err);
+			});
+		};
+
+		load_user_cart();
+
+
+		function draw_cart_item(cart_item) {
+			var li_cart =
+			`<div class "li_cart">
+				Item: ` + cart_item.title + `<br>
+				Quantity: `cart_item.quantity + `<br>
+				Total price: 
+			</div>
+			`
+		};
+	});
+
+{{/section}}
