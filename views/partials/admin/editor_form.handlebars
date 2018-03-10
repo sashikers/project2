@@ -17,24 +17,17 @@
     </div>
     <div class="row">
       <div class="input-field col s6">
-        <select>
-          <option value="" disabled selected>Choose your option</option>
-          <option value="1">Option 1</option>
-          <option value="2">Option 2</option>
-          <option value="3">Option 3</option>
+        <select id="categories">
+          <option value="" disabled selected>Choose Category</option>
+          {{#each categories}}
+            <option value="{{title}}" data-id="{{id}}">{{title}}</option>
+          {{/each}}
         </select>
         <label>Category</label>
       </div>
-      <div class="input-field col s6">
-        <div class="file-field input-field">
-          <div class="btn">
-            <span>File</span>
-            <input type="file" multiple>
-          </div>
-          <div class="file-path-wrapper">
-            <input class="file-path validate" type="text" placeholder="Upload one or more files">
-          </div>
-        </div>
+      <div class="input-field col s6"> 
+        <input id="image_url" type="text" class="validate">
+        <label for="image_url">Image URL</label>
       </div>
     </div>
     <div class="row">
@@ -52,7 +45,12 @@
 </div>
 
 <script type="text/javascript">
-  
+
+$(function(){
+
+  //setup materialize
+  $('select').material_select();
+
   function draw_items(items_array){
     items_array.forEach(function(item){
       var li_card = 
@@ -100,8 +98,8 @@
       price: $('#price').val(),
       inventory: $('#inventory').val(),
       description: $('#description').val(),
-      //category: $()...
-      //images: $('#images').val()
+      category: $('#categories').val(),
+      image_url: $("#image_url").val(),
     };
 
     console.log("Here is the data we are submiting:", data);
@@ -124,6 +122,7 @@
     e.preventDefault();
     submit_form();
   });
-  
+
+});  
 
 </script>

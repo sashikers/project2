@@ -1,7 +1,21 @@
 'use strict';
-//setup App
+//app
 const express = require('express');
 const app = express();
+
+//models
+const models = require('./models/index');
+const force = true;
+models.sequelize.sync({force:force}).then(() =>{
+	//seed data
+	if(force){
+		models.Category.bulkCreate([
+			{title: 'ipa'},
+			{title: 'lager'},
+			{title: 'stout'}
+		]);
+	}
+});
 
 //middleware
 const bodyParser = require('body-parser');

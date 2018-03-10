@@ -1,4 +1,7 @@
 'use strict';
+
+const models = require('../models/index');
+
 module.exports = (app) => {
 
 	//home page
@@ -8,9 +11,11 @@ module.exports = (app) => {
 
 	//admin page
 	app.get('/admin', (req,res) => {
-		res.render('editor', {layout: 'admin.handlebars'});
-	})
+		models.Category.findAll().then((categories)=>{
+			res.status(200).render('editor', {layout: 'admin.handlebars', categories});
+		}).catch(()=>{
+			res.sendStatus(500);
+		});
+	});
 
 };
-
-//{layout: 'admin.handlebars'}

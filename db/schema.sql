@@ -1,4 +1,6 @@
 
+--/** NOTE: SEE models/ file for sequelize model schema, may differ from below
+
 -- database
 
 CREATE DATABASE ecomm;
