@@ -13,7 +13,11 @@ models.sequelize.sync({force:force}).then(() =>{
 			{title: 'ipa'},
 			{title: 'lager'},
 			{title: 'stout'}
-		]);
+		]).then(()=>{
+			models.Product.bulkCreate([
+				{title:'Test Beer', description:'This is good beer', category:'lager', price:12, inventory: 100, image_url:'https://502brews.files.wordpress.com/2013/05/draft-beer-small.jpg'},
+			]);
+		});
 	}
 });
 

@@ -51,45 +51,9 @@ $(function(){
   //setup materialize
   $('select').material_select();
 
-  function draw_items(items_array){
-    items_array.forEach(function(item){
-      var li_card = 
-          `<div class="col s12">
-            <div class="card horizontal">
-              <div class="card-image">
-                <img src="https://lorempixel.com/100/190/nature/6">
-              </div>
-              <div class="card-stacked">
-                <div class="card-content">
-                  <p>`+item.title+`</p>
-                </div>
-                <div class="card-action">
-                  <a data-id="`+item.id+`" class="waves-effect waves-light"><i class="material-icons left">edit</i></a>
-                </div>
-              </div>
-            </div>
-          </div>`
-
-      $('#product-list').append(li_card)
-    });
-  };
-
-  function load_items(){
-    $.ajax('/api/item/list',{
-      type: 'get',
-
-    }).done(function(items){
-      $('#product-list').empty();
-      draw_items(items);
-    }).fail(function(err){
-      alert(err);
-    });
-  };
-
-  load_items();
+  load_items("#product-list");
 
   function load_form(){
-
   };
   
   function  submit_form(){
@@ -102,20 +66,15 @@ $(function(){
       image_url: $("#image_url").val(),
     };
 
-    console.log("Here is the data we are submiting:", data);
-
     $.ajax('/admin/api/editor/',{
       type: 'post',
       data: data,
     }).done(function(data){
-      load_items();
-      console.log("here is the data", data);
+      load_items("#product-list");
     }).fail(function(err){
       alert(err);
     });
   };
-
-  //id: $('#id').val(),
 
   //Handle form submit
   $('#product-form').on('submit', function(e){
