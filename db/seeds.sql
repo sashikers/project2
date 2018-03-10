@@ -1,38 +1,36 @@
 
-
-
 -- users table seed
 
-INSERT INTO users (username, firstname, lastname, is_admin)
-VALUES ("awesomeguy18", "bob", "patterson", false);
+INSERT INTO user (email, password, firstname, lastname, is_admin)
+VALUES ("awesomeguy18@gmail.com", "password", "bob", "patterson", true);
 
-INSERT INTO users (username, firstname, lastname, is_admin)
-VALUES ("keiera87", "keiera", "chatman", false);
+INSERT INTO user (email, password, firstname, lastname, is_admin)
+VALUES ("keiera87@gmail.com", "password", "keiera", "chatman", false);
 
-INSERT INTO users (username, firstname, lastname, is_admin)
-VALUES ("2friendlyfreddy", "fred", "flinstone", false);
+INSERT INTO user (email, password, firstname, lastname, is_admin)
+VALUES ("2friendlyfreddy@gmail.com", "password", "fred", "flinstone", false);
 
 
 -- Products table seeds
 
-INSERT INTO products (product, description, category, inventory, price)
-VALUES ("settlers of catan", "multiplayer resource based board game rated 3rd best board game of all time by ravereivews.org", "games", 10, 85.99);
+INSERT INTO product (title, description, categoryID, inventory, price)
+VALUES ("Blah Blah Blah","deep gold color, double IPA (of course) and jammed packed with hop flavors and aromas. With nine different hop varietals, on top of late-kettle boil additions, this beer has a juicy, hop chewy flavor.", 1, 100, 12.99);
 
-INSERT INTO products (product, description, category, inventory, price)
-VALUES ("Specialized Rockhopper Commuter Bicycle", "Hybrid bike with big wheels, svelte A1-aluminum frame and a Manitou M30 suspension fork and 21 gears", "bikes", 2, 1085.99);
+INSERT INTO product (title, description, categoryID, inventory, price)
+VALUES ("Pabst Blue Ribbon", "The Original Pabst Blue Ribbon. Nature's choicest products provide its prized flavor. Only the finest of hops and grains are used. Selected as America's Best in 1893.", 2, 255, 5.99);
 
-INSERT INTO products (product, description, category, inventory, price)
-VALUES ("MacBook Pro 13in", "Last years (2017) model. 2.3 GHz Intel Core i5 processor, 8GB, 1TB HD.", "electronics", 5, 2199.99);
+INSERT INTO product (title, description, categoryID, inventory, price)
+VALUES ("MacBook Pro 13in", "Dark & delicious, America’s milk stout will change your perception about what a stout can be. Pouring hard out of the bottle, Milk Stout Nitro cascades beautifully, building a tight, thick head like hard whipped cream. The aroma is of brown sugar and vanilla cream, with hints of roasted coffee. The pillowy head coats your upper lip and its creaminess entices your palate. Initial roasty, mocha flavors rise up, with slight hop & roast bitterness in the finish. The rest is pure bless of milk chocolate fullness.", 3, 54, 10.99);
 
 
 -- categories table seeds
 
-INSERT INTO categories (category, count)
-VALUES ("games", 1);
+INSERT INTO category (title)
+VALUES ("ipa");
 
-INSERT INTO categories (category, count)
-VALUES ("bikes", 1);
+INSERT INTO category (title)
+VALUES ("lager");
 
-INSERT INTO categories (category, count)
-VALUES ("electronics", 1);
+INSERT INTO category (title)
+VALUES ("stout");
 
