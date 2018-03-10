@@ -1,16 +1,33 @@
-footer{
-	position: absolute;
-	bottom: 0;
-	width: 100%;
-	padding: 5px;
-	border-top: 1px solid #999;
-	background-color: whitesmoke;
-	color: #999;
+/* Custom Stylesheet */
+/**
+ * Use this file to override Materialize files so you can update
+ * the core Materialize files in the future
+ *
+ * Made By MaterializeCSS.com
+ */
 
+.icon-block {
+  padding: 0 15px;
+}
+.icon-block .material-icons {
+	font-size: inherit;
 }
 
-footer p{
-	margin: 0px;
+/* Tag Modifications */
+nav {
+  background-color: #C57B57;
+  border-bottom: 2px solid #F1AB86;
 }
 
+a {
+  color: #9CAFB7;
+}
 
+body {
+  background-color: #F7DBA7;
+}
+
+/* ID Modifications */
+#bannerImage {
+  opacity: .90;
+}
