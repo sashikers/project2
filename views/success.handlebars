@@ -17,3 +17,12 @@
 		</div>
 	</div>
 </div>
+
+{{#section 'script'}}
+<script type="text/javascript">
+	// empties cart
+	var emptyCart = [];
+	sessionStorage.setItem("cart", JSON.stringify(emptyCart));
+
+</script>
+{{/section}}
