@@ -5,10 +5,7 @@
 	<title>Project2!</title>
 	<!-- <link rel="shortcut icon" href="static/favicon.ico"> -->
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-	<link type="text/css" rel="stylesheet" href="vendor/materialize-css/dist/css/materialize.min.css"  media="screen,projection"/>
-
-	<!-- Testing Links -->
-	
+	<link type="text/css" rel="stylesheet" href="vendor/materialize-css/dist/css/materialize.min.css"  media="screen,projection"/>	
   <link href="static/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 
 	<script src="https://js.stripe.com/v3/"></script>
@@ -16,16 +13,22 @@
 
 </head>
 <body>
-<nav>
-	{{!-- see views/partials/nav --}}
-	{{> nav }}
-</nav>	
 
-<main>
-	{{{ body }}}
-</main>
-
-<footer class="page-footer" style="background-color: #C57B57;">
+{{!-- #wrap and #push for Sticky Footer --}}
+<div id="wrap">
+	<div class="navbar-fixed">
+		<nav>
+			{{!-- see views/partials/nav --}}
+			{{> nav }}
+		</nav>
+	</div>	
+	<main>
+		{{{ body }}}
+		
+		<div id="push"></div>
+	</main>
+</div>
+<footer>
 	{{!-- see views/partials/footer --}}
 	{{> footer }}
 </footer>
@@ -35,6 +38,7 @@
 <script type="text/javascript" src="vendor/materialize-css/dist/js/materialize.min.js"></script>
 <script type="text/javascript" src="static/js/script.js"></script>
 <script type="text/javascript" src="static/js/authentication.js"></script>
+
 {{{_sections.script}}} 
 
 </body>

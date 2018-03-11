@@ -3,10 +3,10 @@
     <div class="nav-wrapper">
       <div class="col md2 left">
         <ul class="left">
-          <li><a href="#" class="brand-logo">Beerazon</a></li>
+          <li><a href="/" class="brand-logo">BeerMazon</a></li>
         </ul>
       </div>
-      <div class="col md6 center">
+      {{!-- <div class="col md6 right">
         <form>
           <div class="input-field">
             <input id="search" type="search" required>
@@ -14,14 +14,26 @@
             <i class="material-icons">close</i>
           </div>
         </form>
-      </div>
+      </div> --}}
       <div class="col md2 right">
         <ul id="nav-mobile" class="right hide-on-med-and-down col md4">
-          <li><a href="#">Sign Up</a></li>
-          <li><a href="#">Sign In</a></li>
+          <li><a id="sign-in" href="#">Sign In</a></li>
           <li><a href="#">Cart</a></li>
         </ul>
       </div>
     </div>
   </div>
 </div>
+
+
+{{#section 'script'}}
+<script type="text/javascript">
+$(function(){
+  $("#sign-in").on("click", function(e) {
+    e.preventDefault();
+    console.log("login clicked");
+    configFirebase();
+  })
+});
+</script>
+{{/section}}

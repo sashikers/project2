@@ -1,14 +1,24 @@
-<div class="row">
+<div class="container">
+	<div class="row">
 
-  <div class="col s4">
-    <ul id="product-list" class="row">
-    	{{!-- Product List goes here --}}
-    </ul>
-  </div>
+	  <aside class="col s4">
+	    <ul id="product-list" class="row">
+	    	{{!-- Product List goes here --}}
+	    </ul>
+	  </aside>
 
-  <div class="col s8">
-  	{{> admin/editor_form }}
-  	{{!-- Editor goes here --}}
-  </div>
+	  <section class="col s8">
+	  	{{> admin/editor_form }}
+	  	{{!-- Editor goes here --}}
+	  </section>
 
+	</div>
 </div>
+
+{{#section 'script'}}
+<script src="static/js/admin.js" type="text/javascript"></script>
+<script type="text/javascript">
+	load_items("#product-list");
+</script>
+{{{_sections.script}}} 
+{{/section}}

@@ -1,4 +1,3 @@
-//After the page loads...
 function admin_card_list_html(items_array){
 	var card_list_html='';
   items_array.forEach(function(item){
