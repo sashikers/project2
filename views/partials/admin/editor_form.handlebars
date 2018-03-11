@@ -78,7 +78,9 @@ $(function(){
       type: method,
       data: data,
     }).done(function(data){
-      load_items("#product-list");
+      load_products('card_horizontal', function(html){
+        $('#product-list').html(html)
+      });
       $('.clear', form).trigger('click');
     }).fail(function(err){
       alert(err);
