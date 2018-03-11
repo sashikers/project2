@@ -1,10 +1,10 @@
 	<div class="container">
 	<div class="row">
 		<div class="col l8 s12" id="cart">
-			{{cart-block}}
+			{{> cart/cart-block }}
 
 		</div>
-		<div class="col l8 s4">
+		<div class="col l4 s12">
 			<!-- "hardcoded" payment button  -->
 			<!-- the form collects the data, tokenizes it, and submits it to the server -->
 			<form action="your-server-side-code" method="POST">
@@ -24,3 +24,14 @@
 		</div>
 	</div>
 </div>
+
+{{#section 'script'}}
+<script type="text/javascript">
+
+load_products('card', function(html){
+  $('#product-list').html(html);
+});
+
+</script>
+{{{_sections.script}}} 
+{{/section}}
