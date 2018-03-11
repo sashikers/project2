@@ -5,17 +5,23 @@
 		$(function() {
 
 			function displayCart() {
+				// grabs the array of ids in the cart from sessionstorage
 				var cartIds = JSON.parse(sessionStorage.getItem("cart"));
 				var cart = [];
 				var total = 0;
 
+				// pulls in the information for all items
 				$.ajax('api/product/list', {
 					type: 'get',
 				}).done(function(items) {
 					var allItems = items;
 
+					// iterates through all the items in the cart id array
 					cartIds.forEach(function(id) {
 
+						// if the cart id matches one in the system,
+						// create an object with relevant information 
+						// and add it to the cart object 
 						for (var y in allItems) {
 							if (allItems[y].id === parseInt(id)) {
 								var cartItem = {
@@ -27,38 +33,55 @@
 								};
 
 								cart.push(cartItem);
-
+								// also add the product price to the total
 								total += allItems[y].price;
 							};
 						};
 					
 					});
 
-					console.log("cart", cart);
-					console.log("total", total);
-
+					// creates a div for each object in the cart object
 					for (var z in cart) {
 						var cartDiv = 
 						`
 						<li class="collection-item avatar">
 							<img src="` + cart[z].image_url + `" class="circle">
-							<span class="title cartTitle">`+ cart[z].title + `</span>
+							<span class="title cartTitle">`+ cart[z].title + ` ($` + cart[z].price + `)</span>
 							<p class="cartDesc">`+ cart[z].description + `</p>
-							<span class="secondary-content">`+ cart[z].price + `</span>
+							<span class="secondary-content" id="` + z + `"><i class="material-icons">delete</i></span>
 						</li>
 						`
 
 						$("#cartItems").append(cartDiv);
 					};
 
+					// creates a div for the total price 
 					var totalDiv = 
 						`
 						<li class="collection-item">
 							<span class="title">Total</span>
-							<span class="secondary-content">`+ total + `</span>
+							<span class="secondary-content">$`+ total + `</span>
 						</li>
 						`
 					$("#cartTotal").append(totalDiv);
+
+					var paymentButton = 
+					`<form class="center" action="your-server-side-code" method="POST">
+				  		<script
+						    src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+						    data-key="pk_test_6pRNASCoBOKtIshFeQd4XMUh"
+						    data-amount="` + total*100 + `"
+						    data-name="Beer Buds"
+						    data-description="We love beer!"
+						    data-image="http://nordictravelmag.com/wp-content/uploads/2017/06/01.jpg"
+						    data-locale="auto"
+						    data-zip-code="true"
+						    data-billing-address="true"
+						    data-shipping-address="true">
+				  		<\/script>
+					</form>`
+					$("#paymentSection").append(paymentButton);
+
 				});
 			}
 

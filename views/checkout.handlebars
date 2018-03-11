@@ -6,24 +6,9 @@
 			<div class="divider"></div>
 			
 		</div>
-		<div class="col l4 s12">
+		<div class="col l4 s12" id="paymentSection">
 			<ul class="collection" id="cartTotal"></ul>
-			<!-- "hardcoded" payment button  -->
-			<!-- the form collects the data, tokenizes it, and submits it to the server -->
-			<form id="payment" class="center" action="your-server-side-code" method="POST">
-		  		<script
-				    src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-				    data-key="pk_test_6pRNASCoBOKtIshFeQd4XMUh"
-				    data-amount="999"
-				    data-name="Beer Buds"
-				    data-description="We love beer!"
-				    data-image="http://nordictravelmag.com/wp-content/uploads/2017/06/01.jpg"
-				    data-locale="auto"
-				    data-zip-code="true"
-				    data-billing-address="true"
-				    data-shipping-address="true">
-		  		</script>
-			</form>
+			
 		</div>
 	</div>
 </div>
