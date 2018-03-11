@@ -1,8 +1,69 @@
-hello
-
 {{#section 'script'}}
 	<script type="text/javascript">
 		console.log("helloooo");
+
+		$(function() {
+
+			function displayCart() {
+				var cartIds = JSON.parse(sessionStorage.getItem("cart"));
+				var cart = [];
+				var total = 0;
+
+				$.ajax('api/product/list', {
+					type: 'get',
+				}).done(function(items) {
+					var allItems = items;
+
+					cartIds.forEach(function(id) {
+
+						for (var y in allItems) {
+							if (allItems[y].id === parseInt(id)) {
+								var cartItem = {
+									id: parseInt(id),
+									title: allItems[y].title,
+									price: allItems[y].price,
+									description: allItems[y].description,
+									image_url: allItems[y].image_url
+								};
+
+								cart.push(cartItem);
+
+								total += allItems[y].price;
+							};
+						};
+					
+					});
+
+					console.log("cart", cart);
+					console.log("total", total);
+
+					for (var z in cart) {
+						var cartDiv = 
+						`
+						<li class="collection-item avatar">
+							<img src="` + cart[z].image_url + `" class="circle">
+							<span class="title cartTitle">`+ cart[z].title + `</span>
+							<p class="cartDesc">`+ cart[z].description + `</p>
+							<span class="secondary-content">`+ cart[z].price + `</span>
+						</li>
+						`
+
+						$("#cartItems").append(cartDiv);
+					};
+
+					var totalDiv = 
+						`
+						<li class="collection-item">
+							<span class="title">Total</span>
+							<span class="secondary-content">`+ total + `</span>
+						</li>
+						`
+					$("#cartTotal").append(totalDiv);
+				});
+			}
+
+		displayCart();
+		});
 
 	</script>
 {{/section}}

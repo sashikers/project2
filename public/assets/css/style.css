@@ -87,3 +87,9 @@ body {
 #bannerImage {
   opacity: .90;
 }
+
+#cartTotal .collection-item {
+  /*background-color: #9CAFB7;*/
+  font-weight: bold;
+}
+

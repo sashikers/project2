@@ -31,13 +31,10 @@ $(function() {
     var cartItemId = this.id; 
     cart.push(cartItemId);
 
-    console.log("cart", cart);
     sessionStorage.setItem("cart", JSON.stringify(cart));
   });
 
 })
-
-console.log("index");
 
 </script>
 {{{_sections.script}}} 
