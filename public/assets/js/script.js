@@ -7,9 +7,9 @@ function card_list_html(items_array){
         <div class="col s12 m4">
           <div class="card">
             <div class="card-image">
-              <img src="`+image_url+`" id="` + item.id + `">
+              <img src="`+image_url+`">
               <span class="card-title">`+item.title+`</span>
-              <a href="#" class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
+              <a href="#" class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons add-to-cart"  id="` + item.id + `">add</i></a>
             </div>
             <div class="card-content">
               <p>`+item.description+`</p>

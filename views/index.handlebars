@@ -19,6 +19,26 @@ load_products('card', function(html){
   $('#product-list').html(html);
 });
 
+$(function() {
+  $(".add-to-cart").on("click", function(event) {
+    event.preventDefault();
+
+    var cart = JSON.parse(sessionStorage.getItem("cart"));
+    if (!Array.isArray(cart)) {
+      cart = [];
+    };
+    
+    var cartItemId = this.id; 
+    cart.push(cartItemId);
+
+    console.log("cart", cart);
+    sessionStorage.setItem("cart", JSON.stringify(cart));
+  });
+
+})
+
+console.log("index");
+
 </script>
 {{{_sections.script}}} 
 {{/section}}
