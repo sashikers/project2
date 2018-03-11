@@ -8,11 +8,11 @@
           <label for="title">Title</label>
         </div> 
         <div class="input-field col s2">
-          <input id="price" type="text" class="validate" required>
+          <input id="price" type="number"  min="0" step="any" class="validate" required>
           <label for="price">Price</label>
         </div>
         <div class="input-field col s2">
-          <input id="inventory" type="text" class="validate" required>
+          <input id="inventory" type="number" min="0" class="validate" required>
           <label for="inventory">Inventory</label>
         </div>
       </div>
@@ -27,7 +27,7 @@
           <label>Category</label>
         </div>
         <div class="input-field col s6"> 
-          <input id="image_url" type="text" class="validate" required>
+          <input id="image_url" type="url" class="validate" required>
           <label for="image_url">Image URL</label>
         </div>
       </div>
@@ -38,7 +38,6 @@
         </div>
         <div>
           {{!-- Images Load Here --}}
-
         </div>
       </div>  
       <button class="btn waves-effect waves-light disabled" type="submit" name="action">CREATE</button>
@@ -94,7 +93,7 @@ $(function(){
       load_products('admin_card_horizontal', function(html){
         $('#product-list').html(html)
       });
-      $('.clear', form).trigger('click');
+      $('.reset', form).trigger('click');
     }).fail(function(err){
       alert(err);
     });

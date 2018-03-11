@@ -6,36 +6,29 @@ module.exports = (app) => {
 
 	//get all products
 	app.get('/api/product/list', (req,res) => {
-		let query = `SELECT * FROM product ORDER BY createdAt ASC`;
-		database.query(query,(err, rows) => {
-			if(err) return res.status(404).json(err);
-			res.status(200).json(rows);
+		models.Product.findAll({order:[['createdAt','DESC']]}).then((products)=>{
+			res.status(200).json(products);
+		}).catch((err)=>{
+			res.status(404).json(err);
 		});
-
 	});
 
 	//create product
 	app.post('/admin/api/editor/', (req, res) => {
-
-		let query = `INSERT INTO product SET ?`;
-		database.query(query, [req.body], (err,rows) => {
-
-			if(err){
-				console.log('ERROR: ',err);
-				return res.status(404).json(err);
-			}
-			return res.status(200).json(rows);
-		});
-
+		models.Product.create(req.body).then((product) => {
+			res.sendStatus(200);
+		}).catch((err) => { 
+			res.status(404).json(err);
+		})
 	});
 
 	//update product
 	app.put('/admin/api/editor/:id', (req, res) => {
 		let id = req.params.id;
-		let query = `UPDATE product SET ? WHERE id = ?`;
-		database.query(query, [req.body, id], (err,rows) => {
-			if(err) return res.status(404).json(err);
-			res.status(200).json(rows);
+		models.Product.update(req.body, {where:[{id}]}).then((product)=>{
+			res.status(200).json(product);
+		}).catch((err)=>{
+			res.status(404).json(err);
 		});
 	});
 
@@ -58,6 +51,4 @@ module.exports = (app) => {
 		});
 
 	});
-
-
 };

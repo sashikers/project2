@@ -69,6 +69,6 @@ function load_products(card_type, callback_fn){
     };
 
   }).fail(function(err){
-    alert(err);
+    alert('ERROR: ', JSON.stringify(err));
   });
 };
