@@ -12,7 +12,7 @@ module.exports = (app) => {
 	//admin page
 	app.get('/admin', (req,res) => {
 		models.Category.findAll().then((categories)=>{
-			res.status(200).render('editor', {layout: 'admin.handlebars', categories});
+			res.status(200).render('editor', {categories});
 		}).catch(()=>{
 			res.sendStatus(500);
 		});
