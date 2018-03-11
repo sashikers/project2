@@ -5,6 +5,11 @@
 		$(function() {
 
 			function displayCart() {
+				// clears out existing
+				$("#cartItems").empty();
+				$("#cartTotal").empty();
+				$("#paymentSection").empty();
+
 				// grabs the array of ids in the cart from sessionstorage
 				var cartIds = JSON.parse(sessionStorage.getItem("cart"));
 				var cart = [];
@@ -48,7 +53,7 @@
 							<img src="` + cart[z].image_url + `" class="circle">
 							<span class="title cartTitle">`+ cart[z].title + ` ($` + cart[z].price + `)</span>
 							<p class="cartDesc">`+ cart[z].description + `</p>
-							<a class="btn-floating btn-small waves-effect waves-light secondary-content deleteButton"><i class="material-icons">delete</i></a>
+							<a class="btn-floating btn-small waves-effect waves-light secondary-content deleteButton" id="` + z + `"><i class="material-icons">delete</i></a>
 						</li>
 						`
 
@@ -83,19 +88,24 @@
 					</form>`
 					$("#paymentSection").append(paymentButton);
 
+
+					// event handler for clicking the delete button
+					$(".deleteButton").on("click", function(event) {
+						event.preventDefault();
+						var indexToBeDeleted = this.id;
+
+						cartIds.splice(indexToBeDeleted, 1);
+						sessionStorage.setItem("cart", JSON.stringify(cartIds));						
+
+
+						displayCart();
+
+					});
+
 				});
 			}
 
 		displayCart();
-
-		$(".deleteButton").on("click", function(event) {
-			event.preventDefault();
-
-			console.log("this", this);
-
-			var idToDelete = this.id;
-			console.log("idToDelete", idToDelete);
-		});
 
 		});
 
