@@ -38,11 +38,22 @@
         </div>
         <div>
           {{!-- Images Load Here --}}
+
         </div>
       </div>  
       <button class="btn waves-effect waves-light" type="submit" name="action">Create</button>
       <button class="btn waves-effect waves-light right red hide clear" name="action">Clear</button>
     </form>
+  </div>
+</div>
+
+<div id="delete-modal" class="modal">
+  <div class="modal-content">
+    <h4>Delete Product</h4>
+    <p>Are you sure you want to delete this product?</p>
+  </div>
+  <div class="modal-footer">
+    <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat agree">Agree</a>
   </div>
 </div>
 
@@ -54,6 +65,7 @@ $(function(){
 
   //setup materialize
   $('select').material_select();
+  $('.modal').modal();
 
   //Handle creating and updating products
   function submit_form(){
@@ -78,7 +90,7 @@ $(function(){
       type: method,
       data: data,
     }).done(function(data){
-      load_products('card_horizontal', function(html){
+      load_products('admin_card_horizontal', function(html){
         $('#product-list').html(html)
       });
       $('.clear', form).trigger('click');
@@ -98,23 +110,48 @@ $(function(){
     }
 
     $(form).trigger('change');
-  };
+  };     
 
   //Handle clicks on product list 'action' buttons
-  $(document).on('click', '#product-list .card a.edit', function(e){
+  $(document).on('click', '#product-list .card a', function(e){
+
     var id = $(this).attr('data-id');
-    get_product_info(id, function(product){
-      $('#id', form).val(product.id);
-      $('#title', form).val(product.title);
-      $('#price', form).val(product.price);
-      $('#inventory', form).val(product.inventory);
-      $('#description', form).val(product.description);
-      $('#categories', form).val(product.category).material_select();
-      $("#image_url", form).val(product.image_url);
-      //update Materialize text display
-      Materialize.updateTextFields();
-      update_button_state();
-    });
+    var action =$(this).attr('data-action');
+
+    if(action === 'edit' || action === 'copy'){
+      get_product(id, function(product){
+        if(action === 'edit'){
+          //id in form needed when sending data to server
+          $('#id', form).val(product.id);
+        }
+        $('#title', form).val(product.title);
+        $('#price', form).val(product.price);
+        $('#inventory', form).val(product.inventory);
+        $('#description', form).val(product.description);
+        $('#categories', form).val(product.category).material_select();
+        $("#image_url", form).val(product.image_url);
+        //update Materialize text display
+        Materialize.updateTextFields();
+        update_button_state();
+      });
+    }
+
+    if(action === 'delete'){
+      $('#delete-modal').modal('open');
+      $('#delete-modal').one('click','a.agree', function(e){
+        delete_product(id, function(){
+          load_products('admin_card_horizontal', function(html){
+            $('#product-list').html(html);
+            //if you delete a product that is loaded into the editor
+            //update the form to 'create' state
+            if($('#id',form).val()===id){
+              $('#id',form).val('');
+              update_button_state();
+            }
+          });
+        });
+      })
+    }
   });
 
   //Listen for change events and update buttons
