@@ -9,6 +9,11 @@ module.exports = (app) => {
 		res.render('index', {testMessage:"hello world!"});
 	});
 
+	// checkout page 
+	app.get('/checkout', (req, res) => {
+		res.render('checkout');
+	});
+
 	//admin page
 	app.get('/admin', (req,res) => {
 		models.Category.findAll().then((categories)=>{

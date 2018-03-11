@@ -4,7 +4,7 @@
 <br><br>
 
 <div class="container">
-  <div class="section">
+  <div class="section" id="card-section">
     <!--   Card Section   -->
     <div class="row">
       <div class="col s12 m4">
@@ -92,3 +92,46 @@
   </div>
   <br><br>
 </div>
+
+<script type="text/javascript">
+  console.log("index java");
+
+  $(function () {
+
+    function displayInventory() {
+      // gets all available products in inventory
+      $.ajax('api/product/list', {
+        type: 'get',
+      }).done(function(items) {
+        var allItems = items;
+        // iterates over all products in inventory and creates a card for each
+        for (var x in allItems) {
+          draw_item_cards(allItems[x]);
+        };
+      }).fail(function(err) {
+        console.log("err", err);
+      });
+    };
+
+    displayInventory();
+
+    function draw_item_cards(item) {
+      console.log("draw_item_cards", item.id, item.title);
+      var li_inventory = 
+        `<div class="col s12 m4">
+          <div class="card">
+            <div class="card-image">
+              <img src="`+ item.image_url +`">
+              <span class="card-title">` + item.title + `</span>
+              <a href="#" class="btn-floating halfway-fab waves-effect waves-light red" id="` + item.id + `"><i class="material-icons">add</i></a>
+            </div>
+            <div class="card-content">
+              <p>` + item.description + `</p>
+            </div>
+          </div>
+        </div>`
+    };
+
+  });
+
+</script>
