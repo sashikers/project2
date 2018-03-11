@@ -21,21 +21,24 @@
 <main>
 	
 	{{{ body }}}
-	
+
 </main>
 
+
 <footer>
-   <p>Project2 &copy; 2018 | <a href="https://github.com/clayton650/project2" target="_blank">GitHub Repo</a></p>
+	{{> footer }}
+<!-- moved footer to view -->
+<!--    <p>Project2 &copy; 2018 | <a href="https://github.com/clayton650/project2" target="_blank">GitHub Repo</a></p> -->
 </footer>
 
-
 <script src="static/js/init.js"></script>
-=======
 <script src="https://www.gstatic.com/firebasejs/4.10.1/firebase.js"></script>
-
 <script type="text/javascript" src="vendor/materialize-css/dist/js/materialize.min.js"></script>
 <script type="text/javascript" src="static/js/script.js"></script>
-{{{_sections.script}}}
+<script type="text/javascript" src="static/js/authentication.js"></script>
+{{{_sections.script}}} 
 
 </body>
+
 </html>
+
