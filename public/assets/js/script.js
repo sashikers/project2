@@ -7,7 +7,7 @@ function card_list_html(items_array){
         <div class="col s12 m4">
           <div class="card">
             <div class="card-image">
-              <img src="`+image_url+`">
+              <img src="`+image_url+`" id="` + item.id + `">
               <span class="card-title">`+item.title+`</span>
               <a href="#" class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
             </div>
