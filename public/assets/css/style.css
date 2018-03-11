@@ -101,6 +101,6 @@ body {
   background-color: #9CAFB7;
 }
 
-.stripe-button-el {
-  background-color: #9CAFB7;
+#redirectHome {
+  font-color: blue;
 }
