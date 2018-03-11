@@ -1,11 +1,37 @@
-function admin_card_list_html(items_array){
+function card_list_html(items_array){
+  var card_list_html='';
+  items_array.forEach(function(item){
+    var image_url = item.image_url || 'static/images/beer1.jpg';
+    var card_html = 
+        ` 
+        <div class="col s12 m4">
+          <div class="card">
+            <div class="card-image">
+              <img src="`+image_url+`">
+              <span class="card-title">`+item.title+`</span>
+              <a href="#" class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
+            </div>
+            <div class="card-content">
+              <p>`+item.description+`</p>
+            </div>
+          </div>
+        </div>
+        `
+
+    card_list_html += card_html;
+  });
+  return card_list_html
+};
+
+function card_horizontal_list_html(items_array){
 	var card_list_html='';
   items_array.forEach(function(item){
+    var image_url = item.image_url || 'static/images/beer1.jpg';
     var card_html = 
         `<div class="col s12">
           <div class="card horizontal">
             <div class="card-image">
-              <img src="`+item.image_url+`">
+              <img src="`+image_url+`">
             </div>
             <div class="card-stacked">
               <div class="card-content">
@@ -25,12 +51,21 @@ function admin_card_list_html(items_array){
   return card_list_html
 };
 
-function load_items(target_element){
+function load_products(card_type, callback_fn){
+
+  var render = {
+    card: card_list_html,
+    card_horizontal: card_horizontal_list_html
+  }
+
   $.ajax('/api/product/list',{
     type: 'get',
   }).done(function(items){
-    var card_list_html = admin_card_list_html(items);
-    $(target_element).html(card_list_html);
+    var html = render[card_type](items);  
+    if(callback_fn && typeof callback_fn === 'function'){
+      callback_fn(html)
+    };
+
   }).fail(function(err){
     alert(err);
   });

@@ -18,7 +18,9 @@
 {{#section 'script'}}
 <script src="static/js/admin.js" type="text/javascript"></script>
 <script type="text/javascript">
-	load_items("#product-list");
+	load_products('card_horizontal', function(html){
+    $('#product-list').html(html);
+  });
 </script>
 {{{_sections.script}}} 
 {{/section}}
