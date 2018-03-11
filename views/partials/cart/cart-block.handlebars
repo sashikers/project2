@@ -48,7 +48,7 @@
 							<img src="` + cart[z].image_url + `" class="circle">
 							<span class="title cartTitle">`+ cart[z].title + ` ($` + cart[z].price + `)</span>
 							<p class="cartDesc">`+ cart[z].description + `</p>
-							<span class="secondary-content" id="` + z + `"><i class="material-icons">delete</i></span>
+							<a class="btn-floating btn-small waves-effect waves-light secondary-content deleteButton"><i class="material-icons">delete</i></a>
 						</li>
 						`
 
@@ -65,6 +65,7 @@
 						`
 					$("#cartTotal").append(totalDiv);
 
+					// creates payment button with correct total information
 					var paymentButton = 
 					`<form class="center" action="your-server-side-code" method="POST">
 				  		<script
@@ -86,6 +87,16 @@
 			}
 
 		displayCart();
+
+		$(".deleteButton").on("click", function(event) {
+			event.preventDefault();
+
+			console.log("this", this);
+
+			var idToDelete = this.id;
+			console.log("idToDelete", idToDelete);
+		});
+
 		});
 
 	</script>

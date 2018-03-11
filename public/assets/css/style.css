@@ -93,3 +93,10 @@ body {
   font-weight: bold;
 }
 
+.deleteButton {
+  background-color: #C57B57;
+}
+
+.deleteButton:hover {
+  background-color: #9CAFB7;
+}
