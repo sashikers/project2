@@ -16,19 +16,18 @@
 
 </head>
 <body>
-	<!-- include handlebars partial from nav.handlebars -->
+<nav>
+	{{!-- see views/partials/nav --}}
 	{{> nav }}
-<main>
-	
-	{{{ body }}}
+</nav>	
 
+<main>
+	{{{ body }}}
 </main>
 
-
-<footer>
+<footer class="page-footer" style="background-color: #C57B57;">
+	{{!-- see views/partials/footer --}}
 	{{> footer }}
-<!-- moved footer to view -->
-<!--    <p>Project2 &copy; 2018 | <a href="https://github.com/clayton650/project2" target="_blank">GitHub Repo</a></p> -->
 </footer>
 
 <script src="static/js/init.js"></script>
