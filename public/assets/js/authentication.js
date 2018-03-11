@@ -1,12 +1,4 @@
 // Code for User Authentication through firebase
-
-$(#login).on("click", function() {
-	console.log("login clicked");
-	configFirebase();
-	console.log("configFirebase function hit...")
-})
-
-
 function configFirebase() {
 	  // Initialize Firebase
   	var config = {

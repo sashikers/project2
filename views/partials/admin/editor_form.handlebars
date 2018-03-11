@@ -1,47 +1,49 @@
-<div class="row card-panel">
-  <form id="product-form" class="col s12">
-    <input id="id" type="hidden" class="validate">
-    <div class="row">
-      <div class="input-field col s8">  
-        <input id="title" type="text" class="validate">
-        <label for="title">Title</label>
-      </div> 
-      <div class="input-field col s2">
-        <input id="price" type="text" class="validate">
-        <label for="price">Price</label>
+<div class="card-panel pin">
+  <div class="row">
+    <form id="product-form" class="col s12">
+      <input id="id" type="hidden" class="validate">
+      <div class="row">
+        <div class="input-field col s8">  
+          <input id="title" type="text" class="validate">
+          <label for="title">Title</label>
+        </div> 
+        <div class="input-field col s2">
+          <input id="price" type="text" class="validate">
+          <label for="price">Price</label>
+        </div>
+        <div class="input-field col s2">
+          <input id="inventory" type="text" class="validate">
+          <label for="inventory">Inventory</label>
+        </div>
       </div>
-      <div class="input-field col s2">
-        <input id="inventory" type="text" class="validate">
-        <label for="inventory">Inventory</label>
+      <div class="row">
+        <div class="input-field col s6">
+          <select id="categories">
+            <option value="" disabled selected>Choose Category</option>
+            {{#each categories}}
+              <option value="{{title}}" data-id="{{id}}">{{title}}</option>
+            {{/each}}
+          </select>
+          <label>Category</label>
+        </div>
+        <div class="input-field col s6"> 
+          <input id="image_url" type="text" class="validate">
+          <label for="image_url">Image URL</label>
+        </div>
       </div>
-    </div>
-    <div class="row">
-      <div class="input-field col s6">
-        <select id="categories">
-          <option value="" disabled selected>Choose Category</option>
-          {{#each categories}}
-            <option value="{{title}}" data-id="{{id}}">{{title}}</option>
-          {{/each}}
-        </select>
-        <label>Category</label>
-      </div>
-      <div class="input-field col s6"> 
-        <input id="image_url" type="text" class="validate">
-        <label for="image_url">Image URL</label>
-      </div>
-    </div>
-    <div class="row">
-      <div class="input-field col s6">
-        <textarea id="description" class="materialize-textarea" data-length="2000"></textarea>
-        <label for="textarea1">Textarea</label>
-      </div>
-      <div>
-        {{!-- Images Load Here --}}
-      </div>
-    </div>  
-    <button class="btn waves-effect waves-light" type="submit" name="action">Create</button>
-    <button class="btn waves-effect waves-light right red hide clear" name="action">Clear</button>
-  </form>
+      <div class="row">
+        <div class="input-field col s6">
+          <textarea id="description" class="materialize-textarea" data-length="2000"></textarea>
+          <label for="textarea1">Textarea</label>
+        </div>
+        <div>
+          {{!-- Images Load Here --}}
+        </div>
+      </div>  
+      <button class="btn waves-effect waves-light" type="submit" name="action">Create</button>
+      <button class="btn waves-effect waves-light right red hide clear" name="action">Clear</button>
+    </form>
+  </div>
 </div>
 
 {{#section 'script'}}

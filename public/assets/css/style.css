@@ -44,6 +44,9 @@ footer {
  * Made By MaterializeCSS.com
  */
 
+
+/* Footer Style */
+
 footer{
 	background-color: #C57B57;
 }
@@ -55,6 +58,7 @@ footer p {
 
 footer p a {
 	color: #F7DBA7;
+	text-decoration: underline;
 }
 
 

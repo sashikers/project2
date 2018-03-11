@@ -16,10 +16,12 @@
 
 {{!-- #wrap and #push for Sticky Footer --}}
 <div id="wrap">
-	<nav>
-		{{!-- see views/partials/nav --}}
-		{{> nav }}
-	</nav>	
+	<div class="navbar-fixed">
+		<nav>
+			{{!-- see views/partials/nav --}}
+			{{> nav }}
+		</nav>
+	</div>	
 	<main>
 		{{{ body }}}
 		
@@ -36,6 +38,7 @@
 <script type="text/javascript" src="vendor/materialize-css/dist/js/materialize.min.js"></script>
 <script type="text/javascript" src="static/js/script.js"></script>
 <script type="text/javascript" src="static/js/authentication.js"></script>
+
 {{{_sections.script}}} 
 
 </body>
