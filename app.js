@@ -21,9 +21,6 @@ models.sequelize.sync({force:force}).then(() =>{
 	}
 });
 
-
-{where:[{title:category}]}
-
 //middleware
 const bodyParser = require('body-parser');
 const path = require('path');
