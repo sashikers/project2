@@ -19,7 +19,7 @@
     "mysql": "^2.15.0",
     "mysql2": "^1.5.2",
     "request": "^2.83.0",
-    "sequelize": "^4.35.2"
+    "sequelize": "^4.35.2",
     "stripe": "^5.5.0"
   },
   "devDependencies": {
