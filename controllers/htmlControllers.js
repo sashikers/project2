@@ -14,6 +14,10 @@ module.exports = (app) => {
 		res.render('checkout');
 	});
 
+	app.get('/success', (req, res) => {
+		res.render('success');
+	});
+
 	//admin page
 	app.get('/admin', (req,res) => {
 		models.Category.findAll().then((categories)=>{

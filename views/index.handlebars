@@ -23,15 +23,19 @@ $(function() {
   $(".add-to-cart").on("click", function(event) {
     event.preventDefault();
 
+    // retreives the current cart 
     var cart = JSON.parse(sessionStorage.getItem("cart"));
     if (!Array.isArray(cart)) {
       cart = [];
     };
     
+    // adds the clicked item to the retreived cart
     var cartItemId = this.id; 
     cart.push(cartItemId);
 
+    // pushes the updated cart Id list to session storage
     sessionStorage.setItem("cart", JSON.stringify(cart));
+    Materialize.toast('Beer added to cart!', 2000);
   });
 
 })
