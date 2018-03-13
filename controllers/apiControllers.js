@@ -9,6 +9,7 @@ module.exports = (app) => {
 		models.Product.findAll({order:[['createdAt','DESC']]}).then((products)=>{
 			res.status(200).json(products);
 		}).catch((err)=>{
+			console.log('ERROR: ',err);
 			res.status(404).json(err);
 		});
 	});
@@ -18,6 +19,7 @@ module.exports = (app) => {
 		models.Product.create(req.body).then((product) => {
 			res.sendStatus(200);
 		}).catch((err) => { 
+			console.log('ERROR: ',err);
 			res.status(404).json(err);
 		})
 	});
@@ -28,6 +30,7 @@ module.exports = (app) => {
 		models.Product.update(req.body, {where:[{id}]}).then((product)=>{
 			res.status(200).json(product);
 		}).catch((err)=>{
+			console.log('ERROR: ',err);
 			res.status(404).json(err);
 		});
 	});
@@ -39,8 +42,9 @@ module.exports = (app) => {
 			if(affectedRows === 0) res.sendStatus(404);
 			res.sendStatus(200);
 		}).catch((err) => {
+			console.log('ERROR: ',err);
 			res.status(404).json(err);
-		})
+		});
 	});
 
 	//get product
@@ -48,7 +52,9 @@ module.exports = (app) => {
 		let id = req.params.id;
 		models.Product.findOne({where:[{id}]}).then((product) => {
 			return res.status(200).json(product);
+		}).catch((err) => {
+			console.log('ERROR: ',err);
+			res.status(404).json(err);
 		});
-
 	});
 };
