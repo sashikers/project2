@@ -1,0 +1,28 @@
+<div class="container">
+	<div class="row center">
+		<div class="column m4 s12">
+			<div class="card horizontal">
+				<div class="card-image">
+					<img src="static/images/beerbanner2.jpg">
+				</div>
+				<div class="card-stacked">
+					<div class="card-content">
+						<p>Payment successful!<br>Your beers are on the way!</p>
+					</div>
+					<div class="card-action">
+						<a href="/" id="redirectHome">Why not shop around some more?</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+{{#section 'script'}}
+<script type="text/javascript">
+	// empties cart
+	var emptyCart = [];
+	sessionStorage.setItem("cart", JSON.stringify(emptyCart));
+
+</script>
+{{/section}}

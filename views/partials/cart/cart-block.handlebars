@@ -1,64 +1,135 @@
-
 {{#section 'script'}}
-	$(function() {
-		
-		function load_user_cart() {
-			$.ajax('api/user/cart', {
-				type: 'get',
-			}).done(function(items) {
+	<script type="text/javascript">
+		$(function() {
 
-				// gets the user cart and stores the user cart items in an array 
-				var user_cart_items = {};
-				user_cart_items = items;
+			function displayCart() {
+				// clears out existing
+				$("#cartItems").empty();
+				$("#cartTotal").empty();
+				$("#paymentSection").empty();
 
-				// goes through the item array and gets an id array
-				var user_cart_ids = [];
-				user_cart_items.forEach(function(item) {
-					user_cart_ids.append(item.id);
-				});
+				// grabs the array of ids in the cart from sessionstorage
+				var cartIds = JSON.parse(sessionStorage.getItem("cart"));
+				var cart = [];
+				var total = 0;
 
-				// pulls all of the items
-				$.ajax('/api/product/list', {
-					type: 'get',
-				}).done(function(allItems) {
-					// goes through all the items and checks if the item id matches the ids in the user cart id array
-					// need to fix this - ajax returns object, not array
-					allItems.forEach(function(item) {
-						if (user_cart_ids.indexOf(item.id) !== -1) {
-							// goes through the user_cart_items object and finds the object with the id
-							for (var x in user_cart_items) {
-								if (user_cart_items[x].id == item.id) {
-									// assigns key/value properties to the item in the user_cart_items
-									user_cart_items[x].title = item.title;
-									user_cart_items[x].price = item.price;
-									user_cart_items[x].description = item.description;
-									user_cart_items[x].category = item.category;
+				if (cartIds.length === 0) {
+					console.log("empty cart");
+					var emptyCartDiv = 
+					`<div class="card horizontal">
+						<div class="card-image">
+							<img src="static/images/beerbanner2.jpg">
+						</div>
+						<div class="card-stacked">
+							<div class="card-content">
+								<p>Your cart is empty :(</p>
+							</div>
+							<div class="card-action">
+								<a href="/" id="redirectHome">Why not shop around?</a>
+							</div>
+						</div>
+					</div>`
+
+					$("#paymentPage").append(emptyCartDiv);
+
+				} else {
+					// pulls in the information for all items
+					$.ajax('api/product/list', {
+						type: 'get',
+					}).done(function(items) {
+						var allItems = items;
+
+						// iterates through all the items in the cart id array
+						cartIds.forEach(function(id) {
+
+							// if the cart id matches one in the system,
+							// create an object with relevant information 
+							// and add it to the cart object 
+							for (var y in allItems) {
+								if (allItems[y].id === parseInt(id)) {
+									var cartItem = {
+										id: parseInt(id),
+										title: allItems[y].title,
+										price: allItems[y].price,
+										description: allItems[y].description,
+										image_url: allItems[y].image_url
+									};
+
+									cart.push(cartItem);
+									// also add the product price to the total
+									total += allItems[y].price;
 								};
 							};
+						
+						});
+
+						// creates a div for each object in the cart object
+						for (var z in cart) {
+							var cartDiv = 
+							`
+							<li class="collection-item avatar">
+								<img src="` + cart[z].image_url + `" class="circle">
+								<span class="title cartTitle">`+ cart[z].title + ` ($` + cart[z].price + `)</span>
+								<p class="cartDesc">`+ cart[z].description + `</p>
+								<a class="btn-floating btn-small waves-effect waves-light secondary-content deleteButton" id="` + z + `"><i class="material-icons">delete</i></a>
+							</li>
+							`
+							// and appends it
+							$("#cartItems").append(cartDiv);
 						};
+
+						// creates a div for the total price 
+						var totalDiv = 
+							`
+							<li class="collection-item">
+								<span class="title">Total</span>
+								<span class="secondary-content">$`+ total + `</span>
+							</li>
+							`
+						$("#cartTotal").append(totalDiv);
+
+						// creates payment button with correct total information
+						var paymentButton = 
+						`<form class="center pmtButton" action="success">
+					  		<script
+							    src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+							    data-key="pk_test_6pRNASCoBOKtIshFeQd4XMUh"
+							    data-amount="` + total*100 + `"
+							    data-name="Beer Buds"
+							    data-description="We love beer!"
+							    data-image="http://nordictravelmag.com/wp-content/uploads/2017/06/01.jpg"
+							    data-locale="auto"
+							    data-zip-code="true"
+							    data-billing-address="true"
+							    data-shipping-address="true">
+					  		<\/script>
+						</form>`
+						$("#paymentSection").append(paymentButton);
+
+
+						// event handler for clicking the delete button
+						$(".deleteButton").on("click", function(event) {
+							event.preventDefault();
+							var indexToBeDeleted = this.id;
+
+							cartIds.splice(indexToBeDeleted, 1);
+							sessionStorage.setItem("cart", JSON.stringify(cartIds));						
+
+
+							displayCart();
+
+						});
+
 					});
+				};
 
 
 
-				})
+			}
 
-			}).fail(function(err){
-				alert(err);
-			});
-		};
+		displayCart();
 
-		load_user_cart();
+		});
 
-
-		function draw_cart_item(cart_item) {
-			var li_cart =
-			`<div class "li_cart">
-				Item: ` + cart_item.title + `<br>
-				Quantity: `cart_item.quantity + `<br>
-				Total price: 
-			</div>
-			`
-		};
-	});
-
+	</script>
 {{/section}}

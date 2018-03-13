@@ -108,3 +108,20 @@ main{
 	z-index: 1;
 	display: inline-block;
 }
+
+#cartTotal .collection-item {
+  /*background-color: #9CAFB7;*/
+  font-weight: bold;
+}
+
+.deleteButton {
+  background-color: #C57B57;
+}
+
+.deleteButton:hover {
+  background-color: #9CAFB7;
+}
+
+#redirectHome {
+  font-color: blue;
+}
