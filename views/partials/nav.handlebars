@@ -8,6 +8,8 @@
       </div>
       <div class="col md2 right">
         <ul id="nav-mobile" class="right hide-on-med-and-down col md4">
+          <li><a class="g-signin2" data-onsuccess="onSignIn" href="#">Sign In</a></li>
+          <li><a class="g-signout" href="#" style="display: none;" onclick="signOut();">Sign out</a></li>
           <li><a href="collapsible.html">Cart</a></li>
           <li><a id="sign-in" href="#">Sign In</a></li>
           <li><a href="/checkout">Cart</a></li>
@@ -18,14 +20,19 @@
 </div>
 
 {{#section 'script'}}
+<script src="static/js/authentication.js"></script>
 <script type="text/javascript">
-$(function(){
-  $("#sign-in").on("click", function(e) {
+
+
+  $(".g-signin2").on("click", function(e) {
     e.preventDefault();
     console.log("login clicked");
-    configFirebase();
+    $(".g-signin2").hide();
+    $(".g-signout").show();
+    // configFirebase();
   })
-});
+
 </script>
+
 {{{_sections.script}}}
 {{/section}}

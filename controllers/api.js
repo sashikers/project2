@@ -19,7 +19,7 @@ function apiCalls() {
 			// beer id
 			let beerID = data.response.beers.items[0].beer.bid;
 			// get all beer names returned from beer search
-			// for (i = 0; i < data.response.beers.items.length, i++) {
+			// for (i = 0; i < data.response.beers.items.length; i++) {
 			// 	console.log(data.response.beers.items[i].beer.beer_name);
 			// }
 	
