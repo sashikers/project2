@@ -18,8 +18,8 @@
       <div class="col md2 right">
         <ul id="nav-mobile" class="right hide-on-med-and-down col md4">
 
-          <li><a class="g-signin2" data-onsuccess="onSignIn" href="#">Sign In</a></li>
-          <li><a class="g-signout" href="#" style="display: none;" onclick="signOut();">Sign out</a></li>
+          <li><a class="g-signin2" data-onsuccess="onSignIn">Sign In</a></li>
+          <li><a class="g-signout" style="display: none;" onclick="signOut();">Sign out</a></li>
           <li><a href="/checkout">Cart</a></li>
           <li><a href="/">Home</a></li>
         </ul>
@@ -34,13 +34,18 @@
 <script type="text/javascript">
 
 
-  $(".g-signin2").on("click", function(e) {
-    e.preventDefault();
+  $(".g-signin2").on("click", function() {
     console.log("login clicked");
     $(".g-signin2").hide();
     $(".g-signout").show();
-    // configFirebase();
   })
+
+  $(".g-signout").on("click", function() {
+    console.log("login clicked");
+    $(".g-signout").hide();
+    $(".g-signin2").show();
+  })
+
 
 </script>
 
