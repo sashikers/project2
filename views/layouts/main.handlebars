@@ -7,7 +7,8 @@
 	<title>BeerMazon!</title>
 	<link rel="shortcut icon" href="static/images/favicon-beer.ico">
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-	<link type="text/css" rel="stylesheet" href="vendor/materialize-css/dist/css/materialize.min.css"  media="screen,projection"/>	
+
+	<link type="text/css" rel="stylesheet" href="vendor/materialize-css/dist/css/materialize.min.css"  media="screen,projection"/>
   <link href="static/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 
 	<script src="https://js.stripe.com/v3/"></script>
@@ -18,6 +19,7 @@
 
 {{!-- #wrap and #push for Sticky Footer --}}
 <div id="wrap">
+	<img id="bannerImage" class="responsive-img z-depth-3" src="static/images/beerbanner.jpg" alt="Beer Banner">
 	<div class="navbar-fixed">
 		<nav>
 			{{!-- see views/partials/nav --}}
@@ -26,7 +28,6 @@
 	</div>	
 	<main>
 		{{{ body }}}
-		
 		<div id="push"></div>
 	</main>
 </div>
