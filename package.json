@@ -20,7 +20,6 @@
     "mysql2": "^1.5.2",
     "sequelize": "^4.35.2",
     "stripe": "^5.5.0"
-
   },
   "devDependencies": {
     "chi": "0.0.10",

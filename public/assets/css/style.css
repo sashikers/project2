@@ -6,6 +6,7 @@
  * Made By MaterializeCSS.com
  */
 
+/* Class Modifications */
 .icon-block {
   padding: 0 15px;
 }
@@ -13,10 +14,19 @@
 	font-size: inherit;
 }
 
+.footerMod {
+	background-color: #C57B57;
+}
+
 /* Tag Modifications */
 nav {
-  background-color: #C57B57;
-  border-bottom: 2px solid #F1AB86;
+  background-color: rgba(37, 22, 5, .20);
+	display: inline-block;
+	z-index: 1;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
 }
 
 a {
@@ -29,5 +39,7 @@ body {
 
 /* ID Modifications */
 #bannerImage {
-  opacity: .90;
+  /* opacity: .9; */
+	z-index: 10;
+	display: inline-block;
 }
