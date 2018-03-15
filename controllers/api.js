@@ -70,8 +70,6 @@ function apiCalls(category, max_beers) {
 				ratingCount: ratingCount
 			}
 
-			console.log(newBeer);
-
 			//just add the beer to the file, will check for duplicates and update file when loadgin seed.json
 			const seed_file = '../db/seed.js'
 			var beers_array = fs.readFileSync(seed_file);
