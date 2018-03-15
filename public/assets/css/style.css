@@ -125,3 +125,18 @@ main{
 #redirectHome {
   font-color: blue;
 }
+
+/* Dropdown Modifications */
+
+.dropdown-content {
+  color: red;
+}
+
+#dropdown1 {
+  background-color: rgba(37, 22, 5, .20);
+  font-size: 100px;
+}
+
+.ipa {
+  font: red;
+}
