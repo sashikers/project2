@@ -3,15 +3,13 @@ var request = require('request');
 var models = require('../models/index.js');
 var fs = require('fs');
 
+
 function apiCalls(category, max_beers) {
 	console.log("API Calls Category", category);
 	var clientId = "14BDEBB8D7A0FF082817C9C7DD17267ADC101A79";
 	var clientSecret = "F31E34402AA7A1EB7F861309A29A6F45BC154550";
 	// var clientId = "0733ADEE2A3B376BF45A72377382272449F9DDDC";
 	// var clientSecret = "037283D5198177523FB45C241A769EE388FD9C14";
-	//let brewery = "21st Amendment"
-	//let specBeer = "Blah Blah Blah"
-	//let beer = brewery + "+" + specBeer;
 
 	// first api call returns beer id from beer search
 	function beerid(category, max_beers) {
@@ -23,13 +21,13 @@ function apiCalls(category, max_beers) {
 			console.log("------------ NEW GET REQUEST ----------")
 			let data = JSON.parse(body);
 			// beer id
-			console.log("******* DATA: ",data);
 			// get all beer names returned from beer search
 			var amount_to_add = max_beers || data.response.beers.items.length;
 			for (i = 0; i < amount_to_add; i++) {
 				var beerID = data.response.beers.items[i].beer.bid;
 				beerInfo(beerID, category)
 			}
+
 		});
 	}
 	beerid(category, max_beers);
@@ -90,8 +88,7 @@ function apiCalls(category, max_beers) {
 			// })
 		})
 	}
-}
-
+};
 
 function add_beers(category_array, max_beers){
 
@@ -102,5 +99,3 @@ function add_beers(category_array, max_beers){
 }
 
 module.exports.add_beers = add_beers;
-
-// apiCalls();
