@@ -14,13 +14,15 @@
           <div class="show-on-medium-and-down hide-on-med-and-up">
             <li class="divider"></li>
             <li><a class="white-text" href="collapsible.html">Cart</a></li>
-            <li><a class="white-text" id="sign-in" href="#">Sign In</a></li>
+            <li><a class="g-signin2" data-onsuccess="onSignIn" href="#">Sign In</a></li>
+            <li><a class="g-signout" href="#" style="display: none;" onclick="signOut();">Sign out</a></li>
             <li><a class="white-text" href="/checkout">Cart</a></li>
           </div>
         </ul>
         <a id="dropDown" class='dropdown-button show-on-medium-and-down' data-beloworigin="true" href='#' data-activates='dropdown1'>Categories</a>
         <ul id="nav-mobile" class="right hide-on-med-and-down col md4">
-          <li><a id="sign-in" href="#">Sign In</a></li>
+          <li><a class="g-signin2" data-onsuccess="onSignIn" href="#">Sign In</a></li>
+          <li><a class="g-signout" href="#" style="display: none;" onclick="signOut();">Sign out</a></li>
           <li><a href="/checkout">Cart</a></li>
         </ul>
       </div>
@@ -29,14 +31,24 @@
 </div>
 
 {{#section 'script'}}
+<script src="static/js/authentication.js"></script>
 <script type="text/javascript">
-$(function(){
-  $("#sign-in").on("click", function(e) {
-    e.preventDefault();
+
+
+  $(".g-signin2").on("click", function() {
     console.log("login clicked");
-    configFirebase();
+    $(".g-signin2").hide();
+    $(".g-signout").show();
   })
-});
+
+  $(".g-signout").on("click", function() {
+    console.log("login clicked");
+    $(".g-signout").hide();
+    $(".g-signin2").show();
+  })
+
+
 </script>
+
 {{{_sections.script}}}
 {{/section}}
