@@ -24,13 +24,18 @@
 <script type="text/javascript">
 
 
-  $(".g-signin2").on("click", function(e) {
-    e.preventDefault();
+  $(".g-signin2").on("click", function() {
     console.log("login clicked");
     $(".g-signin2").hide();
     $(".g-signout").show();
-    // configFirebase();
   })
+
+  $(".g-signout").on("click", function() {
+    console.log("login clicked");
+    $(".g-signout").hide();
+    $(".g-signin2").show();
+  })
+
 
 </script>
 

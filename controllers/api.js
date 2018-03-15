@@ -5,8 +5,8 @@ var models = require('../models/index.js');
 function apiCalls() {
 	var clientId = "0733ADEE2A3B376BF45A72377382272449F9DDDC";
 	var clientSecret = "037283D5198177523FB45C241A769EE388FD9C14";
-	let brewery = "21st Amendment"
-	let specBeer = "Blah Blah Blah"
+	let brewery = ""
+	let specBeer = "Lager"
 	let beer = brewery + "+" + specBeer;
 
 	// first api call returns beer id from beer search
@@ -19,9 +19,9 @@ function apiCalls() {
 			// beer id
 			let beerID = data.response.beers.items[0].beer.bid;
 			// get all beer names returned from beer search
-			// for (i = 0; i < data.response.beers.items.length; i++) {
-			// 	console.log(data.response.beers.items[i].beer.beer_name);
-			// }
+			for (i = 0; i < data.response.beers.items.length; i++) {
+				console.log(data.response.beers.items[i].beer.beer_name);
+			}
 	
 			beerInfo(beerID);
 		});
