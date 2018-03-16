@@ -74,3 +74,11 @@ function load_products(card_type, callback_fn){
     alert('ERROR: ', JSON.stringify(err));
   });
 };
+
+function showModal() {
+  var modal = $("#myModal");
+  $(document).ready(function() {
+    console.log("hellooooo");
+    ("#myModal").style.display = 'block';
+  });
+}
