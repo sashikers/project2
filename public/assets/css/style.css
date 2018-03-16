@@ -141,3 +141,11 @@ main{
   background-color: rgba(37, 22, 5, .20);
   font-size: 100px;
 }
+
+#navCartLength {
+  /*background-color: #9CAFB7;*/
+  padding-left: 5px;
+  min-width: 1rem;
+  font-weight: bold;
+  color: white;
+}
