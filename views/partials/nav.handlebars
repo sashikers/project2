@@ -11,9 +11,10 @@
           <li><a class="ipa white-text" href="#!">IPA</a></li>
           <li><a class="lager white-text" href="#!">Lager</a></li>
           <li><a class="stout white-text" href="#!">Stout</a></li>
+          <li><a class="ale white-text" href="#!">Ale</a></li>
+          <li><a class="pilsner white-text" href="#!">Pilsner</a></li>
           <div class="show-on-medium-and-down hide-on-med-and-up">
             <li class="divider"></li>
-            <li><a class="white-text" href="collapsible.html">Cart</a></li>
             <li><a class="g-signin2" data-onsuccess="onSignIn" href="#">Sign In</a></li>
             <li><a class="g-signout" href="#" style="display: none;" onclick="signOut();">Sign out</a></li>
             <li><a class="white-text" href="/checkout">Cart</a></li>
@@ -33,7 +34,6 @@
 {{#section 'script'}}
 <script src="static/js/authentication.js"></script>
 <script type="text/javascript">
-
 
   $(".g-signin2").on("click", function() {
     console.log("login clicked");

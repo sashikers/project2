@@ -9,6 +9,11 @@ module.exports = (app) => {
 		res.render('index', {testMessage:"hello world!"});
 	});
 
+	//item page
+	app.get('/item', (req, res) => {
+		res.render('item', {testMessage:"hello world!"});
+	});
+
 	// checkout page
 	app.get('/checkout', (req,res) => {
 		res.render('checkout');

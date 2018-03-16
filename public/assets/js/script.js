@@ -2,17 +2,18 @@ function card_list_html(items_array){
   var card_list_html='';
   items_array.forEach(function(item){
     var image_url = item.image_url || 'static/images/beer1.jpg';
-    var card_html = 
-        ` 
+    var card_html =
+        `
         <div class="col s12 m4">
           <div class="card">
             <div class="card-image">
-              <img src="`+image_url+`">
-              <span class="card-title">`+item.title+`</span>
+              <a href="/item"><img class="z-depth-2" style="border-bottom: 1px solid grey;" src="`+image_url+`"></a>
               <a href="#" class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons add-to-cart"  id="` + item.id + `">add</i></a>
             </div>
-            <div class="card-content">
-              <p>`+item.description+`</p>
+            <div class="card-content cardBeer white-text">
+              <p class="cardBeer">`+item.title+`</p>
+              <p class="cardBeer">Category: `+item.category+`</p>
+              <p class="cardBeer">Six Pack: $`+item.price+`</p>
             </div>
           </div>
         </div>
@@ -27,7 +28,7 @@ function admin_card_horizontal_list_html(items_array){
 	var card_list_html='';
   items_array.forEach(function(item){
     var image_url = item.image_url || 'static/images/beer1.jpg';
-    var card_html = 
+    var card_html =
         `<div class="col s12">
           <div class="card horizontal">
             <div class="card-image">
@@ -63,7 +64,7 @@ function load_products(card_type, callback_fn){
   $.ajax('/api/product/list',{
     type: 'get',
   }).done(function(items){
-    var html = render[card_type](items);  
+    var html = render[card_type](items);
     if(callback_fn && typeof callback_fn === 'function'){
       callback_fn(html)
     };
