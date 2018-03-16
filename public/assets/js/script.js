@@ -4,13 +4,14 @@ function card_list_html(items_array){
     var image_url = item.image_url || 'static/images/beer1.jpg';
     var card_html =
         `
-        <div class="col s12 m4">
+        <div class="col s12 m3">
           <div class="card">
             <div class="card-image">
               <a href="/item"><img class="z-depth-2" style="border-bottom: 1px solid grey;" src="`+image_url+`"></a>
-              <a href="#" class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons add-to-cart"  id="` + item.id + `">add</i></a>
+              <a href="#" class="btn-floating halfway-fab waves-effect waves-light"><i class="material-icons add-to-cart"  id="` + item.id + `">add</i></a>
+
             </div>
-            <div class="card-content cardBeer white-text">
+            <div class="card-content cardBeer">
               <p class="cardBeer">`+item.title+`</p>
               <p class="cardBeer">Category: `+item.category+`</p>
               <p class="cardBeer">Six Pack: $`+item.price+`</p>

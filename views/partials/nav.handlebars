@@ -49,7 +49,8 @@
 
   // adds an item count to the cart link 
   var cart = JSON.parse(sessionStorage.getItem("cart"));
-  var cartLength = cart.length;
+  console.log("cart", cart);
+  var cartLength = cart.length || 0;
   var cartLengthDiv = 
   `<span class="badge" id="navCartLength">  ` + cartLength + `</span>`
   $("#navCart").append(cartLengthDiv);

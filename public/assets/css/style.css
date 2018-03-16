@@ -73,11 +73,22 @@ footer p a {
 	background-color: #C57B57;
 }
 
-.cardBeer {
-  background-color: #F1AB86;
-  font-size: 24px;
-  text-transform: capitalize;
+.card {
+  display: inline-block;
+  width: 100%;
 }
+
+.cardBeer {
+  background-color: #F7DBA7;
+  font-size: 18px;
+  text-transform: capitalize;
+  color: #251605;
+}
+
+.btn-floating {
+  background-color: #251605;
+}
+
 /* Tag Modifications */
 nav {
   background-color: rgba(37, 22, 5, .20);
@@ -149,3 +160,4 @@ main{
   font-weight: bold;
   color: white;
 }
+
