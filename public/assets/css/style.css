@@ -89,6 +89,10 @@ footer p a {
   background-color: #251605;
 }
 
+.btn-floating:hover {
+  background-color: #9CAFB7;
+}
+
 /* Tag Modifications */
 nav {
   background-color: rgba(37, 22, 5, .20);

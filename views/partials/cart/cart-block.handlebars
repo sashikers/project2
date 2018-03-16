@@ -113,6 +113,15 @@
 							var indexToBeDeleted = this.id;
 
 							cartIds.splice(indexToBeDeleted, 1);
+
+							var cartLength = (cart.length - 1) || 0;
+
+							$("#navCart").empty();
+
+							var cartLengthDiv = 
+							  `<span class="badge" id="navCartLength">  ` + cartLength + `</span>`
+						  	$("#navCart").append(cartLengthDiv);
+
 							sessionStorage.setItem("cart", JSON.stringify(cartIds));						
 
 
