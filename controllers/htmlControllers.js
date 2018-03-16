@@ -9,9 +9,20 @@ module.exports = (app) => {
 		res.render('index', {testMessage:"hello world!"});
 	});
 
-	//item page
-	app.get('/item', (req, res) => {
+	app.get('/item/', (req, res) => {
 		res.render('item', {testMessage:"hello world!"});
+	});
+
+	//item page
+	app.get('/item/:id', (req, res) => {
+		let id = req.params.id;
+		console.log(id);
+		models.Product.findOne({where:[{id}]}).then((product) => {
+			var dataValues = product.dataValues;
+			console.log("dataValues", dataValues);
+			res.render('item', {dataValues});
+		});
+		// res.render('item', {testMessage:"hello world!"});
 	});
 
 	// checkout page

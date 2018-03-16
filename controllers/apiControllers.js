@@ -14,6 +14,17 @@ module.exports = (app) => {
 		});
 	});
 
+	// get one product
+	app.get('/api/product/:id', (req, res) => {
+		let id = req.params.id;
+		models.Product.findOne({where:[{id}]}).then((product) => {
+			return res.status(200).json(product);
+		}).catch((err) => {
+			console.log('ERROR: ',err);
+			res.status(404).json(err);
+		});
+	});
+
 	//create product
 	app.post('/admin/api/editor/', (req, res) => {
 		models.Product.create(req.body).then((product) => {

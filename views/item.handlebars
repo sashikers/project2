@@ -1,1 +1,59 @@
-<h1>Under Construction</h1>
+<!-- <h1>Under Construction</h1> -->
+<div class="container">
+	<div class="row">
+		<div class="col s12 m8">
+			<h2 class="itemHeader">{{dataValues.title}}</h2>
+			<div class="card horizontal indivDescription">
+				<div class="card-image">
+					<img src="{{dataValues.image_url}}" class="indivPic">
+				</div>
+				<div class="card-stacked">
+					<div class="card-content">
+						<p>
+							<strong>Description</strong>: {{dataValues.description}}<br><br>
+							<strong>Brewery:</strong> {{dataValues.brewery}}<br><br>
+							<strong>Category:</strong> {{dataValues.category}}<br><br>
+							<strong>ABV:</strong> {{dataValues.abv}}<br><br>
+							<strong>IBU:</strong> {{dataValues.ibu}}<br><br>
+							<strong>Untappd rating:</strong> {{dataValues.rating}}<br>
+						</p>
+					</div>
+					<a class="waves-effect waves-light btn indiv-add-to-cart"><i class="material-icons right">add</i>Add to cart</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+{{#section 'script'}}
+$(function() {
+  $(document).on("click", ".indiv-add-to-cart, function(event) {
+    event.preventDefault();
+
+    // retreives the current cart 
+    var cart = JSON.parse(sessionStorage.getItem("cart"));
+    if (!Array.isArray(cart)) {
+      cart = [];
+    };
+    
+    // adds the clicked item to the retreived cart
+    var cartItemId = this.id; 
+    cart.push(cartItemId);
+
+    $("#navCart").empty();
+    var cartLengthDiv = 
+      `<span class="badge" id="navCartLength">  ` + cart.length + `</span>`
+    $("#navCart").append(cartLengthDiv);
+
+    // pushes the updated cart Id list to session storage
+    sessionStorage.setItem("cart", JSON.stringify(cart));
+    Materialize.toast('Beer added to cart!', 2000);
+  });
+
+})
+
+
+
+{{{_sections.script}}} 
+{{/section}}
