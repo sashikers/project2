@@ -79,10 +79,10 @@ footer p a {
 }
 
 .cardBeer {
-  background-color: #F7DBA7;
+  background-color: #C57B57;
   font-size: 18px;
   text-transform: capitalize;
-  color: #251605;
+  color: white;
 }
 
 .btn-floating {
@@ -111,6 +111,7 @@ body {
 #bannerImage{
   position: fixed;
   z-index: 0;
+  width: 100%;
 }
 
 main{
