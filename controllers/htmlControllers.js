@@ -18,8 +18,9 @@ module.exports = (app) => {
 		let id = req.params.id;
 		console.log(id);
 		models.Product.findOne({where:[{id}]}).then((product) => {
-			console.log("product", product.dataValues);
-			res.render('item', {product});
+			var dataValues = product.dataValues;
+			console.log("dataValues", dataValues);
+			res.render('item', {dataValues});
 		});
 		// res.render('item', {testMessage:"hello world!"});
 	});

@@ -85,6 +85,10 @@ footer p a {
   color: white;
 }
 
+.card-image {
+  margin-left: 20px;
+}
+
 .btn-floating {
   background-color: #251605;
 }
@@ -186,4 +190,28 @@ main{
   padding: 20px;
   border: 1px solid black;
   width: 80%;
+}
+
+.itemHeader {
+  background-color: #F7DBA7;
+  font-size: 30px;
+  padding: 10px;
+  font-weight: bold;
+}
+
+.indivPic {
+  margin: 30px;
+}
+
+.indivDescription {
+  background-color: #F7DBA7; 
+}
+
+.indiv-add-to-cart {
+  margin: 10px;
+  background-color: #251605;
+}
+
+.indiv-add-to-cart:hover {
+  background-color: #9CAFB7;
 }

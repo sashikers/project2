@@ -49,14 +49,14 @@
 
   // adds an item count to the cart link 
 
-  // $(window).on("load", function() {
-  //   var cart = JSON.parse(sessionStorage.getItem("cart"));
-  //   console.log("cart", cart);
-  //   var cartLength = cart.length || 0;
-  //   var cartLengthDiv = 
-  //   `<span class="badge" id="navCartLength">  ` + cartLength + `</span>`
-  //   $("#navCart").append(cartLengthDiv);
-  // });
+  $(window).on("load", function() {
+    var cart = JSON.parse(sessionStorage.getItem("cart")) || 0;
+    console.log("cart", cart);
+    var cartLength = cart.length || 0;
+    var cartLengthDiv = 
+    `<span class="badge" id="navCartLength">  ` + cartLength + `</span>`
+    $("#navCart").append(cartLengthDiv);
+  });
   
 
 </script>
