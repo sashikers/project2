@@ -11,7 +11,7 @@
 
 <div id="myModal" class="modal">
   <div class="modal-content">
-    <p>age checkage checkage checkage checkage checkage checkage checkage checkage checkage checkage checkage checkage checkage checkage checkage checkage checkage checkage checkage checkage checkage checkage checkage checkage checkage checkage checkage checkage checkage checkage checkage checkage checkage checkage checkage checkage checkage checkage checkage checkage checkage checkage checkage checkage checkage checkage checkage checkage checkage checkage checkage checkage checkage checkage checkage checkage checkage checkage checkage checkage checkage checkage checkage checkage checkage checkage checkage checkage checkage checkage check</p>
+    <p>age check</p>
   </div>
 </div>
 
@@ -43,6 +43,11 @@ $(function() {
     // adds the clicked item to the retreived cart
     var cartItemId = this.id; 
     cart.push(cartItemId);
+
+    $("#navCart").empty();
+    var cartLengthDiv = 
+      `<span class="badge" id="navCartLength">  ` + cart.length + `</span>`
+    $("#navCart").append(cartLengthDiv);
 
     // pushes the updated cart Id list to session storage
     sessionStorage.setItem("cart", JSON.stringify(cart));
