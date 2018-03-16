@@ -18,7 +18,7 @@
 							<strong>Untappd rating:</strong> {{dataValues.rating}}<br>
 						</p>
 					</div>
-					<a class="waves-effect waves-light btn indiv-add-to-cart"><i class="material-icons right">add</i>Add to cart</a>
+					<a class="waves-effect waves-light btn indiv-add-to-cart" id={{dataValues.id}}><i class="material-icons right">add</i>Add to cart</a>
 				</div>
 			</div>
 		</div>
@@ -27,8 +27,9 @@
 
 
 {{#section 'script'}}
+<script type="text/javascript">
 $(function() {
-  $(document).on("click", ".indiv-add-to-cart, function(event) {
+  $(document).on("click", ".indiv-add-to-cart", function(event) {
     event.preventDefault();
 
     // retreives the current cart 
@@ -39,6 +40,8 @@ $(function() {
     
     // adds the clicked item to the retreived cart
     var cartItemId = this.id; 
+    console.log("this", this);
+    console.log("cartItemId", cartItemId);
     cart.push(cartItemId);
 
     $("#navCart").empty();
@@ -53,7 +56,7 @@ $(function() {
 
 })
 
-
+</script>
 
 {{{_sections.script}}} 
 {{/section}}
