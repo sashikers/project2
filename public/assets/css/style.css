@@ -73,6 +73,11 @@ footer p a {
 	background-color: #C57B57;
 }
 
+.cardBeer {
+  background-color: #F1AB86;
+  font-size: 24px;
+  text-transform: capitalize;
+}
 /* Tag Modifications */
 nav {
   background-color: rgba(37, 22, 5, .20);
@@ -135,8 +140,4 @@ main{
 #dropdown1 {
   background-color: rgba(37, 22, 5, .20);
   font-size: 100px;
-}
-
-.ipa {
-  font: red;
 }
