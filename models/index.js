@@ -8,9 +8,15 @@ var env       = process.env.NODE_ENV || 'development';
 var config    = require(__dirname + '/../config/config.json')[env];
 var db        = {};
 
+
 config.define = {
   //prevent sequelize from pluralizing table names
   freezeTableName: true,
+  //insure proper encoding
+  dialectOptions: {
+      charset: 'utf8',
+      collate: 'utf8_general_ci',
+    },
 };
 
 if (config.use_env_variable) {

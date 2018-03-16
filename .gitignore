@@ -23,8 +23,8 @@
 # Logs and databases #
 ######################
 *.log
-
 *.sqlite
+seed.js
 
 # OS generated files #
 ######################
