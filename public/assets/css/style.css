@@ -73,11 +73,22 @@ footer p a {
 	background-color: #C57B57;
 }
 
-.cardBeer {
-  background-color: #F1AB86;
-  font-size: 24px;
-  text-transform: capitalize;
+.card {
+  display: inline-block;
+  width: 100%;
 }
+
+.cardBeer {
+  background-color: #C57B57;
+  font-size: 18px;
+  text-transform: capitalize;
+  color: white;
+}
+
+.btn-floating {
+  background-color: #251605;
+}
+
 /* Tag Modifications */
 nav {
   background-color: rgba(37, 22, 5, .20);
@@ -100,6 +111,7 @@ body {
 #bannerImage{
   position: fixed;
   z-index: 0;
+  width: 100%;
 }
 
 main{
@@ -140,4 +152,34 @@ main{
 #dropdown1 {
   background-color: rgba(37, 22, 5, .20);
   font-size: 100px;
+}
+
+#navCartLength {
+  /*background-color: #9CAFB7;*/
+  padding-left: 5px;
+  min-width: 1rem;
+  font-weight: bold;
+  color: white;
+}
+
+
+/*age check modal*/
+.modal {
+  /*display: none;*/
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: red;
+}
+
+.modal-content {
+  background-color: yellow;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid black;
+  width: 80%;
 }
