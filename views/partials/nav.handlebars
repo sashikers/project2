@@ -32,7 +32,7 @@
 </div>
 
 {{#section 'script'}}
-<script src="static/js/authentication.js"></script>
+<script src="/static/js/authentication.js"></script>
 <script type="text/javascript">
 
   $(".g-signin2").on("click", function() {
@@ -48,12 +48,16 @@
   })
 
   // adds an item count to the cart link 
-  var cart = JSON.parse(sessionStorage.getItem("cart"));
-  console.log("cart", cart);
-  var cartLength = cart.length || 0;
-  var cartLengthDiv = 
-  `<span class="badge" id="navCartLength">  ` + cartLength + `</span>`
-  $("#navCart").append(cartLengthDiv);
+
+  // $(window).on("load", function() {
+  //   var cart = JSON.parse(sessionStorage.getItem("cart"));
+  //   console.log("cart", cart);
+  //   var cartLength = cart.length || 0;
+  //   var cartLengthDiv = 
+  //   `<span class="badge" id="navCartLength">  ` + cartLength + `</span>`
+  //   $("#navCart").append(cartLengthDiv);
+  // });
+  
 
 </script>
 

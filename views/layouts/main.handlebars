@@ -5,11 +5,11 @@
 	<meta name="google-signin-client_id" content="882732018398-2e8jsdcam7a4d45h532b0evbhb99fmb8.apps.googleusercontent.com">
 
 	<title>BeerMazon!</title>
-	<link rel="shortcut icon" href="static/images/favicon-beer.ico">
+	<link rel="shortcut icon" href="/static/images/favicon-beer.ico">
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-	<link type="text/css" rel="stylesheet" href="vendor/materialize-css/dist/css/materialize.min.css"  media="screen,projection"/>
-  <link href="static/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+	<link type="text/css" rel="stylesheet" href="/vendor/materialize-css/dist/css/materialize.min.css"  media="screen,projection"/>
+  <link href="/static/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 
 	<script src="https://js.stripe.com/v3/"></script>
 	<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
@@ -19,10 +19,10 @@
 
 {{!-- #wrap and #push for Sticky Footer --}}
 <div id="wrap">
-	<img id="bannerImage" class="responsive-img z-depth-3" src="static/images/beerbanner.jpg" alt="Beer Banner">
+	<img id="bannerImage" class="responsive-img z-depth-3" src="/static/images/beerbanner.jpg" alt="Beer Banner">
 	<div class="navbar-fixed">
 		<nav>
-			{{!-- see views/partials/nav --}}
+			{{!-- see /views/partials/nav --}}
 			{{> nav }}
 		</nav>
 	</div>	
@@ -32,14 +32,14 @@
 	</main>
 </div>
 <footer>
-	{{!-- see views/partials/footer --}}
+	{{!-- see /views/partials/footer --}}
 	{{> footer }}
 </footer>
 
-<script src="static/js/init.js"></script>
-<script type="text/javascript" src="vendor/materialize-css/dist/js/materialize.min.js"></script>
-<script type="text/javascript" src="static/js/script.js"></script>
-<script type="text/javascript" src="static/js/authentication.js"></script>
+<script src="/static/js/init.js"></script>
+<script type="text/javascript" src="/vendor/materialize-css/dist/js/materialize.min.js"></script>
+<script type="text/javascript" src="/static/js/script.js"></script>
+<script type="text/javascript" src="/static/js/authentication.js"></script>
 <script src="https://apis.google.com/js/platform.js" async defer></script>
 
 
