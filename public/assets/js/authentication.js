@@ -11,16 +11,16 @@ function onSignIn(googleUser) {
   var name = profile.getName();
   var email = profile.getEmail();
 
-  $.ajax({
-    type: 'POST',
-    url: '/',
-    data: { name: name,
-            email: email },
-    async: false,
-    success: function(data) {
-    	console.log("*******DATA******", data);
-    }
-  });
+  // $.ajax({
+  //   type: 'POST',
+  //   url: '/',
+  //   data: { name: name,
+  //           email: email },
+  //   async: false,
+  //   success: function(data) {
+  //   	console.log("*******DATA******", data);
+  //   }
+  // });
 }
 
 // onSignIn();
