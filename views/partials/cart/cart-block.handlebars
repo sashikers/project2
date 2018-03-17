@@ -69,7 +69,7 @@
 							`
 							<li class="collection-item avatar">
 								<img src="` + cart[z].image_url + `" class="circle">
-								<span class="title cartTitle">`+ cart[z].title + ` ($` + cart[z].price + `)</span>
+								<a href="/item/` + cart[z].id + `"><span class="title cartTitle">`+ cart[z].title + ` ($` + cart[z].price + `)</span></a>
 								<p class="cartDesc">`+ cart[z].description + `</p>
 								<a class="btn-floating btn-small waves-effect waves-light secondary-content deleteButton" id="` + z + `"><i class="material-icons">delete</i></a>
 							</li>
