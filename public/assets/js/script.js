@@ -25,35 +25,39 @@ function card_list_html(items_array){
   return card_list_html
 };
 
+
 function admin_card_horizontal_list_html(items_array){
-	var card_list_html='';
+  var card_list_html='';
   items_array.forEach(function(item){
     var image_url = item.image_url || '/static/images/beer1.jpg';
     var card_html =
-        `<div class="col s12">
-          <div class="card horizontal">
-            <div class="card-image">
-              <img src="`+image_url+`">
-            </div>
-            <div class="card-stacked">
-              <div class="card-content">
-                <p>Title: `+item.title+`</p>
-                <p>Category: `+item.category+`</p>
-                <p>Price: $`+item.price+`</p>
-                <p>Inventory: `+item.inventory+`</p>
-              </div>
-              <div class="card-action">
-                <a data-id="`+item.id+`" class="waves-effect waves-light" data-action="edit"><i class="material-icons left">edit</i></a>
-                <a data-id="`+item.id+`" class="waves-effect waves-light copy" data-action="copy"><i class="material-icons left">content_copy</i></a>
-                <a data-id="`+item.id+`" class="waves-effect waves-light delete" data-action="delete"><i class="material-icons left">delete</i></a>
-              </div>
-            </div>
-          </div>
-        </div>`
-  	card_list_html += card_html;
- 	});
+      `
+      <div class="card sticky-action">
+        <div class="card-image waves-effect waves-block waves-light">
+          <img class="activator" src="`+image_url +`">
+        </div>
+        <div class="card-content">
+          <span class="card-title activator grey-text text-darken-4">`+item.title+`<i class="material-icons right">more_vert</i></span>
+          <span>$`+item.price+` | `+item.inventory+` remaining</span>
+        </div>
+        <div class="card-action center">
+          <a title='product page' href="item/`+item.id+`" class="waves-effect waves-light" target="_blank"><i class="material-icons left">reply</i></a>
+          <a title='edit' href="#" data-id="`+item.id+`" class="waves-effect waves-light action" target="_blank"  data-action="edit"><i class="material-icons left">edit</i></a>
+          <a title='copy' href="#" data-id="`+item.id+`" class="waves-effect waves-light action copy" target="_blank" data-action="copy"><i class="material-icons left">content_copy</i></a>
+          <a title='delete' href="#" data-id="`+item.id+`" class="waves-effect waves-light action delete" target="_blank" data-action="delete"><i class="material-icons left">delete</i></a>
+        </div>
+        <div class="card-reveal">
+          <span class="card-title grey-text text-darken-4">`+item.title+`<i class="material-icons right">close</i></span>
+          <p>`+item.description+`</p>
+        </div>
+      </div>
+      `
+    card_list_html += card_html;
+  });
   return card_list_html
 };
+
+
 
 function load_products(card_type, callback_fn){
 

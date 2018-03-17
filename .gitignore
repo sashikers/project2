@@ -24,7 +24,6 @@
 ######################
 *.log
 *.sqlite
-seed.js
 
 # OS generated files #
 ######################
