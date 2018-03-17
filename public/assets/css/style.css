@@ -56,7 +56,7 @@ footer {
   }
 
  .admin #product-list .card img{
-  
+
     width: 200px;
     margin: 5px auto 0 auto;
  }
@@ -76,6 +76,31 @@ footer p {
 footer p a {
 	color: #F7DBA7;
 	text-decoration: underline;
+}
+
+/* Google Sign in/out */
+/* The excessive use of !important is to negate google's inline styling */
+.g-signin2, .abcRioButton, .abcRioButtonContentWrapper {
+  font-size: 12px !important;
+  color: white !important;
+  background-color: rgba(37, 22, 5, .03) !important;
+  padding: 0px !important;
+  height: auto !important;
+  width: auto !important;
+}
+
+.abcRioButtonIcon {
+  margin-top: 15px !important;
+}
+
+@media only screen and (max-width: 992px) {
+    .abcRioButtonIcon {
+        margin-top: 1px !important;
+    }
+    .g-signout {
+      margin: auto !important;
+      color: white !important;
+    }
 }
 
 /* Class Modifications */
@@ -221,7 +246,7 @@ main{
 }
 
 .indivDescription {
-  background-color: #F7DBA7; 
+  background-color: #F7DBA7;
 }
 
 .indiv-add-to-cart {
