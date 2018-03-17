@@ -61,6 +61,31 @@ footer {
     margin: 5px auto 0 auto;
  }
 
+ .admin #editor .card-panel{
+  position: fixed;
+  width: 46%
+ }
+
+.admin #editor nav{
+  position: absolute;
+  background-color: #C57B57;
+  left: 0px;
+  top: 0;
+ }
+
+ .admin #editor nav .nav-title{
+  padding:0;
+  margin-left: 10px;
+ }
+
+ .admin #editor nav .btn-floating{
+  right: -24px;
+ }
+
+ .admin #editor form{
+  margin-top: 40px;
+ }
+
 
 /* Footer Style */
 
@@ -140,14 +165,8 @@ footer p a {
 }
 
 /* Tag Modifications */
-nav {
+nav#top-nav{
   background-color: rgba(37, 22, 5, .20);
-	display: inline-block;
-	z-index: 1;
-	position: absolute;
-	top: 0;
-	left: 0;
-	right: 0;
 }
 
 a {

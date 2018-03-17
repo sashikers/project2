@@ -1,5 +1,15 @@
-<div class="card-panel pin">
-  <div class="row">
+<div class="card-panel">
+ <div class="row">
+  <nav>
+    <div class="nav-wrapper">
+      <span class="nav-title">Product Editor</span>
+      <a class="btn-floating btn-large halfway-fab waves-effect waves-light black">
+        <i class="material-icons add">add</i>
+      </a>
+    </div>
+  </nav>
+
+ 
     <form id="product-form" class="col s12">
       <input id="id" type="hidden" class="validate" required>
       <div class="row">
@@ -93,10 +103,11 @@ $(function(){
   function update_button_state(){
     var id = $('#id', form).val();
     var $submitButton = $("button[type='submit']")
+  
     if(id){
-      $submitButton.text('Update');
+      $submitButton.text('Update');     
     }else{
-      $submitButton.text('Create');    
+      $submitButton.text('Create');   
     }
 
     $(form).trigger('change');
@@ -173,14 +184,19 @@ $(function(){
     if(form_is_valid){
       $submitButton.removeClass('disabled')
     }
-
   });
+
+  //Add new product
+  $('.admin #editor nav .add').on('click', function(e){
+    e.preventDefault();
+    $("#id",form).val('');
+    $('.reset').trigger('click');
+  })
 
   //Clear form inputs
   $('.reset', form).on('click', function(e){
     e.preventDefault();
     $(form)[0].reset();
-    $("#id",form).val('');
     $('#categories', form).material_select();
     update_button_state();
     $(form).trigger('change');
