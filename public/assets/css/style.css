@@ -45,6 +45,23 @@ footer {
  */
 
 
+ /* Admin */
+
+ .admin #product-list .card-image{
+  margin-left: 0;
+ }
+
+  .admin #product-list .material-icons{
+    margin-right: 5px;
+  }
+
+ .admin #product-list .card img{
+  
+    width: 200px;
+    margin: 5px auto 0 auto;
+ }
+
+
 /* Footer Style */
 
 footer{
@@ -172,7 +189,7 @@ main{
 
 
 /*age check modal*/
-.modal {
+#myModal .modal {
   /*display: none;*/
   position: fixed;
   z-index: 1;
@@ -184,7 +201,7 @@ main{
   background-color: red;
 }
 
-.modal-content {
+#myModal .modal-content {
   background-color: yellow;
   margin: 15% auto;
   padding: 20px;
