@@ -32,6 +32,13 @@ $(function() {
   function products_load(pathname){
     load_products('card', pathname, function(html){
       $('#product-list').html(html);
+      if(html===''){
+        //if no products found send user back to home page
+        var cat = pathname.replace('/','');
+        Materialize.toast('Could not find category '+cat, 2000);
+        products_load('/');
+        window.history.replaceState('','','/');
+      };
     });
   };
 
