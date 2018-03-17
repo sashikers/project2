@@ -80,7 +80,7 @@ $(function(){
       type: method,
       data: data,
     }).done(function(data){
-      load_products('admin_card_horizontal', function(html){
+      load_products('admin_card_horizontal', '/', function(html){
         $('#product-list').html(html)
       });
       $('.reset', form).trigger('click');
@@ -134,7 +134,7 @@ $(function(){
       $('#delete-modal').modal('open');
       $('#delete-modal').one('click','a.agree', function(e){
         delete_product(id, function(){
-          load_products('admin_card_horizontal', function(html){
+          load_products('admin_card_horizontal', '/', function(html){
             $('#product-list').html(html);
             //if you delete a product that is loaded into the editor
             //update the form to 'create' state

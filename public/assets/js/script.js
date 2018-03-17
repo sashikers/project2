@@ -59,14 +59,16 @@ function admin_card_horizontal_list_html(items_array){
 
 
 
-function load_products(card_type, callback_fn){
+function load_products(card_type, category, callback_fn){
 
   var render = {
     card: card_list_html,
     admin_card_horizontal: admin_card_horizontal_list_html
   }
 
-  $.ajax('/api/product/list',{
+  var category = category || '/';
+
+  $.ajax('/api/product/list'+category, {
     type: 'get',
   }).done(function(items){
     var html = render[card_type](items);

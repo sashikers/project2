@@ -5,8 +5,15 @@ const models = require('../models/index');
 module.exports = (app) => {
 
 	//get all products
-	app.get('/api/product/list', (req,res) => {
-		models.Product.findAll({order:[['createdAt','DESC']]}).then((products)=>{
+	app.get('/api/product/list/:category?', (req,res) => {
+
+		let category = req.params.category
+		let query_object = {order:[['category','DESC']]};
+		if(category){
+			query_object.where = {category}
+		}
+
+		models.Product.findAll(query_object).then((products)=>{
 			res.status(200).json(products);
 		}).catch((err)=>{
 			console.log('ERROR: ',err);

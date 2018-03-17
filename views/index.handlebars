@@ -26,11 +26,32 @@
   });
 
 
-load_products('card', function(html){
-  $('#product-list').html(html);
-});
-
 $(function() {
+
+  //load_prodoct wrapper
+  function products_load(pathname){
+    load_products('card', pathname, function(html){
+      $('#product-list').html(html);
+    });
+  };
+
+  //load products when page loads
+  products_load(window.location.pathname);
+
+  //Update products when back or forward button are pressed
+  $(window).on('popstate', function() {
+    products_load(window.location.pathname);
+  });
+    
+  //Listen for category dropdown clicks
+  $("#category-dropdown a").on('click', function(e){
+    e.preventDefault();
+    var pathname = $(this).attr('href');
+    products_load(pathname);
+    window.history.pushState('','',pathname);
+  });
+
+
   $(document).on("click", ".add-to-cart", function(event) {
     event.preventDefault();
 
@@ -39,7 +60,6 @@ $(function() {
     if (!Array.isArray(cart)) {
       cart = [];
     };
-    
     // adds the clicked item to the retreived cart
     var cartItemId = this.id; 
     cart.push(cartItemId);
