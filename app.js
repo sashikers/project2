@@ -45,6 +45,16 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use('/static', express.static(path.join(__dirname, "/public/assets")));
 app.use('/vendor', express.static(path.join(__dirname, '/node_modules')));
 
+//template context middleware
+app.use((req,res,next)=>{
+	//nav categoreis for nav bar
+	models.Category.findAll().then((categories)=>{
+		res.locals.categories = categories;
+		next();
+	});
+});
+
+
 //handlebars
 var exphbs = require("express-handlebars");
 app.engine('handlebars', exphbs({

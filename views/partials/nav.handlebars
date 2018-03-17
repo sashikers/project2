@@ -7,12 +7,11 @@
         </ul>
       </div>
       <div class="col md2 right">
-        <ul id='dropdown1' class='dropdown-content'>
-          <li><a class="ipa white-text" href="#!">IPA</a></li>
-          <li><a class="lager white-text" href="#!">Lager</a></li>
-          <li><a class="stout white-text" href="#!">Stout</a></li>
-          <li><a class="ale white-text" href="#!">Ale</a></li>
-          <li><a class="pilsner white-text" href="#!">Pilsner</a></li>
+        <ul id='category-dropdown' class='dropdown-content'>
+          <li><a class="white-text" href="/">All</a></li>
+          {{#each categories}}
+            <li><a class="white-text" href="/{{title}}">{{title}}</a></li>
+          {{/each}}
           <div class="show-on-medium-and-down hide-on-med-and-up">
             <li class="divider"></li>
             <li><a class="g-signin2" data-onsuccess="onSignIn" href="#">Sign In</a></li>
@@ -20,7 +19,7 @@
             <li><a class="white-text" href="/checkout">Cart</a></li>
           </div>
         </ul>
-        <a id="dropDown" class='dropdown-button show-on-medium-and-down' data-beloworigin="true" href='#' data-activates='dropdown1'>Categories</a>
+        <a id="dropDown" class='dropdown-button show-on-medium-and-down' data-beloworigin="true" href='#' data-activates='category-dropdown'>Categories</a>
         <ul id="nav-mobile" class="right hide-on-med-and-down col md4">
           <li><a class="g-signin2" data-onsuccess="onSignIn" href="#">Sign In</a></li>
           <li><a class="g-signout" href="#" style="display: none;" onclick="signOut();">Sign out</a></li>
@@ -35,17 +34,22 @@
 <script src="/static/js/authentication.js"></script>
 <script type="text/javascript">
 
-  $(".g-signin2").on("click", function() {
-    console.log("login clicked");
-    $(".g-signin2").hide();
-    $(".g-signout").show();
-  })
+  $(function(){
 
-  $(".g-signout").on("click", function() {
-    console.log("login clicked");
-    $(".g-signout").hide();
-    $(".g-signin2").show();
-  })
+    $(".g-signin2").on("click", function() {
+      console.log("login clicked");
+      $(".g-signin2").hide();
+      $(".g-signout").show();
+    })
+
+    $(".g-signout").on("click", function() {
+      console.log("login clicked");
+      $(".g-signout").hide();
+      $(".g-signin2").show();
+    })
+
+
+  });
 
   // adds an item count to the cart link 
 
@@ -58,7 +62,6 @@
     $("#navCart").append(cartLengthDiv);
   });
   
-
 </script>
 
 {{{_sections.script}}}
